@@ -2,17 +2,17 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import {
   SharedLayout,
   Home,
-} from './components';
+  ErrorPage,  
+} from './pages';
 
 function App() {
-
   return (  
     <BrowserRouter>
       <Routes>
          {/* SharedLayout is used as a layout wrapper for all routes */}
         <Route path="/" element={<SharedLayout />}>
           <Route index element={<Home />} />
-          
+          <Route path="*" element={<ErrorPage />} />          
         </Route>
       </Routes>
     </BrowserRouter>   

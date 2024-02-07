@@ -1,0 +1,13 @@
+// Components
+@import "../components/Aside/aside";
+@import "../components/Favourites/favourites";
+@import "../components/Likes/likes";
+@import "../components/Logo/logo";
+@import "../components/MainContent/mainContent";
+@import "../components/Navigation/navigation";
+@import "../components/Search/search";
+
+// Pages
+@import "../pages/utils/sharedLayout";
+@import "../pages/ErrorPage/errorPage";
+@import "../pages/Home/home";

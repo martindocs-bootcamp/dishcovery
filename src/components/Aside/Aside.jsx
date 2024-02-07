@@ -1,5 +1,5 @@
-import Search from './Search';
-import Favourites from './Favourites';
+import Search from '../Search';
+import Favourites from '../Favourites/Favourites';
 
 const Aside = () => {
   return (

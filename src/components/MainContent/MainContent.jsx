@@ -2,7 +2,7 @@
 
 const MainContent = () => {
   return (
-    <div>
+    <div className="main">
         text-steps or text-nutritions or text-drinks
     </div>
   )

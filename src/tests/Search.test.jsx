@@ -1,4 +1,3 @@
-// Search.test.jsx
 import { it } from 'vitest';
 import { render } from '@testing-library/react';
 import { AppProvider } from '../context/appContext'; 

@@ -1,5 +1,6 @@
 import { createContext, useReducer } from "react"; 
 import reducer from './reducer';
+import PropTypes from 'prop-types';
 import { initialState } from "./initState";
 import {
     HANDLE_INPUT,
@@ -27,3 +28,6 @@ export const AppProvider = ({children}) => {
     )
 }
 
+AppProvider.propTypes = {
+    children: PropTypes.string
+}

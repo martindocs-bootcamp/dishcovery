@@ -1,17 +1,32 @@
-import { useState } from 'react';
+import { useGlobalContext } from '../../hooks/useGlobalContext'; 
+const Search = () => {  
+  const { search, handleInput } = useGlobalContext();
 
-const Search = () => {
-  const[searchInput, setInputSearch] = useState('');
+  const handleInputChange = (e) => {
+    const name = e.target.name;
+    const value = e.target.value;
+
+    handleInput({name, value});
+  }
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    // fetch the data from API
+    if(search !== ''){
+      // fetchData(search);
+    }
+  }
  
   return (
-    <form className="search-form" onSubmit={(e)=> e.preventDefault()}>
+    <form className="search-form" onSubmit={handleSubmit}>
       <label htmlFor="search" className='search-label'>Search</label>
       <input 
         type="text" 
         name="search"
         placeholder="Search..."
-        value={searchInput}
-        onChange={(e)=> setInputSearch(e.target.value)}
+        value={search}
+        onChange={handleInputChange}
       />
     </form>
   )

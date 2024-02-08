@@ -6,6 +6,8 @@ const reducer = (state, action) => {
 
     switch(action.type){
         case HANDLE_INPUT:
+            console.log(action.payload.name);
+            console.log(action.payload.value);
             return {
                 ...state,
                 [action.payload.name]: action.payload.value

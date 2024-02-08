@@ -2,7 +2,7 @@
 const LandingPage = () => {
     return (
       <section className="landing-page">
-        Landing Page
+        Time To Dishcover
       </section>
     )
   }

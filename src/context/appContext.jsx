@@ -29,5 +29,5 @@ export const AppProvider = ({children}) => {
 }
 
 AppProvider.propTypes = {
-    children: PropTypes.string
+    children: PropTypes.object
 }

@@ -22,7 +22,7 @@ const Home = () => {
               <Likes />
             </div>
             <section className='home-content'>
-              <MainContent />
+              <MainContent data = {data}/>
             </section>
           </Col>
           <Col>

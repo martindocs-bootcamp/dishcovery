@@ -1,4 +1,5 @@
 import { useGlobalContext } from '../../hooks/useGlobalContext'; 
+import Form from 'react-bootstrap/Form';
 
 const Search = () => {    
   
@@ -21,9 +22,9 @@ const Search = () => {
   }
  
   return (
-    <form className="search-form" onSubmit={handleSubmit}>
-      <label htmlFor="search" className='search-label'>Search</label>
-      <input 
+    <Form className="search-form" onSubmit={handleSubmit}>
+      <Form.Label htmlFor="search" className='search-label'>Search</Form.Label>
+      <Form.Control 
         type="text" 
         name="search"
         placeholder="Search..."
@@ -31,7 +32,7 @@ const Search = () => {
         id="search"
         onChange={handleInputChange}
       />
-    </form>
+    </Form>
   )
 }
 

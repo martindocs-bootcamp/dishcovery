@@ -2,12 +2,21 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { MainContent, Likes } from '../../components'; 
 
+import data from "../../data/data.json";
+import Title from '../../components/Title/Title';
+import Ingredients from '../../components/Ingredients/Ingredients';
+import ImageFood from '../../components/ImageFood/ImageFood';
+
+
+
+
 const Home = () => {
     return (
       <main className="home">
         <Row>
           <Col>
-            <h2>Title</h2>
+          <Title data={data}/>
+            
             <div className='home-btn'>
               links to steps or nutritions or drinks
               <Likes />
@@ -17,10 +26,8 @@ const Home = () => {
             </section>
           </Col>
           <Col>
-            <img src="..." alt="..." />
-            <section className="home-ingridients">
-             ingridients
-            </section>
+            <ImageFood data = {data} />
+            <Ingredients meals={data.meals[0]}/>
           </Col>
         </Row>
       </main>

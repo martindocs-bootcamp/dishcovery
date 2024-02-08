@@ -1,6 +1,12 @@
-import { useGlobalContext } from '../../hooks/useGlobalContext'; 
+// import { useGlobalContext } from '../../hooks/useGlobalContext'; 
+import  { useContext } from 'react';
+import { AppContext } from '../../context/appContext'
+
+
 const Search = () => {  
-  const { search, handleInput } = useGlobalContext();
+  
+  const { search, handleInput } = useContext(AppContext);
+  // const { search, handleInput } = useGlobalContext();
 
   const handleInputChange = (e) => {
     const name = e.target.name;

@@ -1,5 +1,8 @@
 import {
     HANDLE_INPUT,
+
+    GET_EDAMAM_RECIPES_BEGIN,
+    GET_EDAMAM_RECIPES_SUCCESS,
 } from './actions';
 
 const reducer = (state, action) => {
@@ -9,6 +12,20 @@ const reducer = (state, action) => {
             return {
                 ...state,
                 [action.payload.name]: action.payload.value
+            }
+
+        case GET_EDAMAM_RECIPES_BEGIN:
+            return {
+                ...state,
+                isLoading: true,
+            }
+
+        case GET_EDAMAM_RECIPES_SUCCESS:
+            
+            return {
+                ...state,
+                isLoading: false,
+                edamamAPI: action.payload.results
             }
         default:
             return new Error(`No such action ${action.type}`);

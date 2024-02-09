@@ -11,7 +11,7 @@ const MainContent = (props) => {
 
   // Extracting the instructions for the first meal in the meals array
   const { strInstructions } = meals[0];
-
+  
   return (
     <div className="main">
       {/* Rendering the instructions of the first meal  */}

@@ -1,12 +1,12 @@
 import SharedLayout from "./utils/SharedLayout";
-import Home from './Home/Home';
+import Recipe from './Recipe/Recipe';
 import ErrorPage from "./ErrorPage/ErrorPage";
 import LandingPage from "./LandingPage/LandingPage"
 
 
 export {
     SharedLayout,
-    Home,
+    Recipe,
     ErrorPage,
     LandingPage,
 }

@@ -1,9 +1,11 @@
 import { useGlobalContext } from '../../hooks/useGlobalContext'; 
 import Form from 'react-bootstrap/Form';
+import { useNavigate } from 'react-router-dom';
 
 const Search = () => {    
   
-  const { search, handleInput, fetchEdamamRecipes } = useGlobalContext();
+  const { search, handleInput, fetchEdamamRecipes } = useGlobalContext();  
+  const navigate = useNavigate(); 
 
   const handleInputChange = (e) => {
     const name = e.target.name;
@@ -16,8 +18,9 @@ const Search = () => {
     e.preventDefault();
 
     // fetch the data from API
-    if(search !== ''){    
+    if(search.trim() !== ''){    
       fetchEdamamRecipes(); 
+      navigate('/recipe');
     }
   }
  

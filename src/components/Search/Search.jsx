@@ -3,7 +3,7 @@ import Form from 'react-bootstrap/Form';
 
 const Search = () => {    
   
-  const { search, handleInput } = useGlobalContext();
+  const { search, handleInput, fetchEdamamRecipes } = useGlobalContext();
 
   const handleInputChange = (e) => {
     const name = e.target.name;
@@ -16,8 +16,8 @@ const Search = () => {
     e.preventDefault();
 
     // fetch the data from API
-    if(search !== ''){
-      // fetchData(search);
+    if(search !== ''){    
+      fetchEdamamRecipes(); 
     }
   }
  

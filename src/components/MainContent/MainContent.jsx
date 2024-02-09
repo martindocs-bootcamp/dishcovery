@@ -1,4 +1,4 @@
-import React from "react";
+
 
 // Defining the MainContent using arrow function syntax with props
 const MainContent = (props) => {
@@ -13,7 +13,7 @@ const MainContent = (props) => {
   const { strInstructions } = meals[0];
 
   return (
-    <div className="main overflow-auto">
+    <div className="main">
       {/* Rendering the instructions of the first meal  */}
       {strInstructions}
     </div>

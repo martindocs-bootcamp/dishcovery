@@ -1,25 +1,6 @@
-import React from "react";
 
-function Ingredients(props) {
-  // Destructuring the meals prop
-  // const { meals } = props;
-  const ingredients = props.edamanData.hits[0].recipe.ingredients;
-  // Setting an empty array to store ingredients
-  // const ingredientsArray = [];
+function Ingredients({ingredients}) {
 
-  // Looping through ingredients
-  // for (let i = 1; i <= 20; i++) {
-  //   const ingredient = receipe[`ingredientLines${[i]}`];
-
-  //   // Checking if the ingredient exists
-  //   if (ingredient) {
-  //     // If it exist, push it to the ingredients array
-  //     ingredientsArray.push(ingredient);
-  //   } else {
-  //     // If it doesn't exist, break out of the loop
-  //     break;
-  //   }
-  // }
   return (
     <div className="ingredients m-4">
       <h3 className="mb-3">Ingredients</h3>

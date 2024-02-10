@@ -5,18 +5,23 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { Link } from 'react-router-dom';
 
-import drinks from '../../data/drinks.json';
+import { useGlobalContext } from '../../hooks/useGlobalContext'; 
+import { useEffect } from 'react';
 
 const Drinks = () => {
-   
+  const { drinksAPI, fetchDrinksRecipes } = useGlobalContext();
+    
   const{
     strDrinkThumb, 
     strDrink,
     strCategory,
     strGlass,
     strInstructions, 
-  } = drinks.drinks[0];
+  } = drinksAPI;
 
+  useEffect(()=> {
+    fetchDrinksRecipes();
+  },[])
 
   const extractData = (obj) => {
     const data = [];
@@ -34,7 +39,7 @@ const Drinks = () => {
     return data;
   }
 
-  const ingredientNames = extractData(drinks.drinks[0]);
+  const ingredientNames = extractData(drinksAPI);
    
   return (
     <section>
@@ -61,7 +66,7 @@ const Drinks = () => {
                     <ListGroup.Item 
                       key={index}
                     >
-                      {ingredient} - {measure}
+                      {ingredient} {measure}
                     </ListGroup.Item>
                   )
                 })

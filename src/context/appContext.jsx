@@ -8,9 +8,13 @@ import {
 
     GET_EDAMAM_RECIPES_BEGIN,
     GET_EDAMAM_RECIPES_SUCCESS,
+
+    GET_DRINKS_RECIPES_BEGIN,
+    GET_DRINKS_RECIPES_SUCCESS,
 } from './actions';
 
 import edamamData from '../data/edamam.json';
+import drinksData from '../data/drinks.json';
 
 export const AppContext = createContext();
 
@@ -29,17 +33,37 @@ export const AppProvider = ({children}) => {
         const edamamApiID = import.meta.env.VITE_EDAMAM_APP_ID;
         const edamamApiKey = import.meta.env.VITE_EDAMAM_APP_KEY;
 
-        dispatch({type: GET_EDAMAM_RECIPES_BEGIN})
-        try {
-            // const {data} = await axios.get(`https://api.edamam.com/api/recipes/v2?type=public&q=${search}&app_id=${edamamApiID}&app_key=${edamamApiKey}`);
+        if (state.edamamAPI.length === 0) {
+            dispatch({type: GET_EDAMAM_RECIPES_BEGIN})
+            try {
+                // const {data} = await axios.get(`https://api.edamam.com/api/recipes/v2?type=public&q=${search}&app_id=${edamamApiID}&app_key=${edamamApiKey}`);
 
-            // const {hits:results} = data;
-            const {hits:results} = edamamData;
-          
-            dispatch({type: GET_EDAMAM_RECIPES_SUCCESS, payload: {results}})
-        }catch(err) {
-            console.log(err);
-        }    
+                // const {hits:results} = data;
+                const {hits:results} = edamamData;
+            
+                dispatch({type: GET_EDAMAM_RECIPES_SUCCESS, payload: {results}})
+            }catch(err) {
+                console.log(err);
+            }    
+        }
+    }
+
+    const fetchDrinksRecipes = async() => {
+
+        if (state.drinksAPI.length === 0) {
+            dispatch({type: GET_DRINKS_RECIPES_BEGIN});
+            try {
+                
+                // const {data} = await axios.get('https://www.thecocktaildb.com/api/json/v1/1/random.php');
+            
+                // const results = data.drinks[0];
+                const results = drinksData.drinks[0];
+                              
+                dispatch({type: GET_DRINKS_RECIPES_SUCCESS, payload:{results}});
+            }catch(err) {
+                console.log(err);
+            }
+        }
     }
 
     return (
@@ -48,6 +72,7 @@ export const AppProvider = ({children}) => {
                 ...state,
                 handleInput,
                 fetchEdamamRecipes,
+                fetchDrinksRecipes,
             }}
         >
             {children}

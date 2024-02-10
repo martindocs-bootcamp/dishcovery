@@ -9,12 +9,18 @@ import {
 } from '../../components'; 
 import { useGlobalContext } from '../../hooks/useGlobalContext'; 
 import { Link } from 'react-router-dom';
+import { useEffect } from 'react';
 
 import data from "../../data/data.json";
 
 const Recipe = () => {
-  const { edamamAPI } = useGlobalContext();  
-  
+  const { edamamAPI, fetchEdamamRecipes } = useGlobalContext();  
+
+  useEffect(() => {
+    // Fetch the API data when the component mounts
+    fetchEdamamRecipes();
+  }, []);
+
   if(edamamAPI.length === 0){
     return (
       <section className="">
@@ -22,7 +28,6 @@ const Recipe = () => {
       </section>
     )
   }
-
  
   return edamamAPI.length !== 0 && (
     <main className="home">

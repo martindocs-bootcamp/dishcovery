@@ -11,9 +11,6 @@ import { useGlobalContext } from '../../hooks/useGlobalContext';
 import { Link } from 'react-router-dom';
 import { useEffect } from 'react';
 
-import data from "../../data/data.json";
-import edamanData from "../../data/edamam.json";
-
 const Recipe = () => {
   const { edamamAPI, fetchEdamamRecipes } = useGlobalContext();  
 
@@ -30,11 +27,13 @@ const Recipe = () => {
     )
   }
  
+  const{label, ingredientLines, image, ingredients} = edamamAPI[0].recipe;
+
   return edamamAPI.length !== 0 && (
     <main className="home">
       <Row>
         <Col>
-        <Title edamanData={edamanData}/>            
+        <Title title={label}/>            
           <div className='home-btn'>           
             <Link to="/recipe">
               <Button vatiant="primary">Nutritions</Button>
@@ -45,12 +44,12 @@ const Recipe = () => {
             <Button variant='primary'>Likes</Button>
           </div>
           <section className='home-content'>
-            <MainContent edamanData={edamanData}/>
+            <MainContent ingrediens={ingredientLines}/>
           </section>
         </Col>
         <Col>
-          <ImageFood data={data} />
-          <Ingredients edamanData={edamanData}/>
+          <ImageFood image={image} />
+          <Ingredients ingredients={ingredients}/>
         </Col>
       </Row>
     </main>

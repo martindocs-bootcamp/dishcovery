@@ -23,8 +23,7 @@ const reducer = (state, action) => {
                 isLoading: true,
             }
 
-        case GET_EDAMAM_RECIPES_SUCCESS:
-            
+        case GET_EDAMAM_RECIPES_SUCCESS:            
             return {
                 ...state,
                 isLoading: false,

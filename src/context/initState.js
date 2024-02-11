@@ -1,6 +1,6 @@
 export const initialState = {
     isLoading: false,
     edamamAPI: [],
-    drinksAPI: [],
+    drinksAPI: [],    
     search: ''
 }

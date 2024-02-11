@@ -7,6 +7,7 @@ import Favourites from "./Favourites/Favourites";
 import Title from "./Title/Title";
 import Ingredients from './Ingredients/Ingredients';
 import ImageFood from './ImageFood/ImageFood';
+import ShareButtons from "./ShareButtons/ShareButtons";
 
 export { 
   Navigation, 
@@ -18,4 +19,5 @@ export {
   Title,
   Ingredients,
   ImageFood,
+  ShareButtons,
 };

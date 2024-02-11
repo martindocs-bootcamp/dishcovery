@@ -1,4 +1,18 @@
-.home {
+.recipe {
 
+  &-print {
+    background: rgb(230, 169, 248);
+    padding: 2px 8px 8px;
+    border-radius: 50%;
+    border: 0;
+
+    svg {
+      color: #000000;
+    }
+  }
+
+  &-print:hover {
+    opacity: .85;
+  }
 
 }

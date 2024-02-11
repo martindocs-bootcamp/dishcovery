@@ -1,10 +1,18 @@
-.error-page {
-    container: flex;
-    color:#eebe87;
-    align-items: center;
-    justify-content: center;
-    font-size: 1200%;
-    font-weight: bold;
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    text-align: left;
+.error {
+
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+  
+    &-header {
+      padding-left: 20px;
+    }
+  
+    &-img {
+      height: 80%;
+    }
+  
+    &-home {
+      color: rgb(18, 78, 209);
+    }
 }

@@ -6,6 +6,7 @@ import {
   Title,
   Ingredients,
   ImageFood,
+  ShareButtons,
 } from '../../components'; 
 import { useGlobalContext } from '../../hooks/useGlobalContext'; 
 import { Link } from 'react-router-dom';
@@ -27,7 +28,7 @@ const Recipe = () => {
     )
   }
  
-  const{label, ingredientLines, image, ingredients} = edamamAPI[0].recipe;
+  const{label, ingredientLines, image, ingredients, url} = edamamAPI[0].recipe;
 
   return edamamAPI.length !== 0 && (
     <main className="home">
@@ -42,6 +43,8 @@ const Recipe = () => {
               <Button vatiant="primary">Drinks</Button>
             </Link>            
             <Button variant='primary'>Likes</Button>
+
+            <ShareButtons url={url} />            
           </div>
           <section className='home-content'>
             <MainContent ingrediens={ingredientLines}/>

@@ -3,14 +3,12 @@ import Card from 'react-bootstrap/Card';
 import ListGroup from 'react-bootstrap/ListGroup';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import { Link, useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useGlobalContext } from '../../hooks/useGlobalContext'; 
 import { useEffect } from 'react';
-import { ShareButtons } from '../../components';
 
 const Drinks = () => {
   const { drinksAPI, fetchDrinksRecipes } = useGlobalContext();
-  const location = useLocation();
   
   const{
     strDrinkThumb, 

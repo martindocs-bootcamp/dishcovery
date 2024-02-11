@@ -1,10 +1,12 @@
+import { Link } from 'react-router-dom';
 import logo from "../../assets/logo.png";
 
 const Navigation = () => {
   return (
-    <nav>
-      {/* replace whole content with boostrap navbar */}
-      <img src={logo} className="logo" />
+    <nav>      
+      <Link to="/">
+        <img src={logo} className="logo" />
+      </Link>
     </nav>
   );
 };

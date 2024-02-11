@@ -1,0 +1,56 @@
+.loading {
+ 
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+
+  
+  &-header {
+    // padding-left: 10px;
+    text-align: center;
+    margin-bottom: 0;
+    font-weight: 600;
+    letter-spacing: 2.5px;
+    color: #000000;
+  }
+  
+  &-bar{
+    position: relative;
+    height: 8px;
+    width: 10rem;
+    border: 8px solid #fddebb;
+    border-radius: 15px;
+  }
+  
+  &-color{
+    position: absolute;
+    background: #ffffff;
+    width: 0px;
+    height: 8px;
+    top: -.25rem;
+    left: -.25rem;
+    border-radius: 15px;
+    animation: load 4s infinite linear;    
+  }
+  
+  @keyframes load{
+    0%{
+      width: 0%;
+    }
+    25%{
+        width: 50%;
+    }
+    50%{
+        width: 75%;
+    }
+    75%{
+        width: 85%;
+    }
+    100%{
+        width: 100%;
+    }
+  }
+
+
+}

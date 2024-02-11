@@ -8,6 +8,7 @@ import Title from "./Title/Title";
 import Ingredients from './Ingredients/Ingredients';
 import ImageFood from './ImageFood/ImageFood';
 import ShareButtons from "./ShareButtons/ShareButtons";
+import Loading from "./Loading/Loading";
 
 export { 
   Navigation, 
@@ -20,4 +21,5 @@ export {
   Ingredients,
   ImageFood,
   ShareButtons,
+  Loading,
 };

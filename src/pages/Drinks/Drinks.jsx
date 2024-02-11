@@ -6,9 +6,10 @@ import Col from 'react-bootstrap/Col';
 import { Link } from 'react-router-dom';
 import { useGlobalContext } from '../../hooks/useGlobalContext'; 
 import { useEffect } from 'react';
+import { Loading } from '../../components';
 
 const Drinks = () => {
-  const { drinksAPI, fetchDrinksRecipes } = useGlobalContext();
+  const { isLoading, drinksAPI, fetchDrinksRecipes } = useGlobalContext();
   
   const{
     strDrinkThumb, 
@@ -39,6 +40,10 @@ const Drinks = () => {
   }
 
   const ingredientNames = extractData(drinksAPI);
+
+  if(isLoading) {
+    return <Loading />
+  }
 
   return (
     <section className='drinks'>

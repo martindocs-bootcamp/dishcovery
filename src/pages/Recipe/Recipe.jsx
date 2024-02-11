@@ -7,6 +7,7 @@ import {
   Ingredients,
   ImageFood,
   ShareButtons,
+  Loading,
 } from '../../components'; 
 import { useGlobalContext } from '../../hooks/useGlobalContext'; 
 import { Link } from 'react-router-dom';
@@ -15,7 +16,7 @@ import { useReactToPrint } from 'react-to-print';
 import { FaPrint } from "react-icons/fa";
 
 const Recipe = () => {
-  const { edamamAPI, fetchEdamamRecipes } = useGlobalContext();  
+  const { isLoading, edamamAPI, fetchEdamamRecipes } = useGlobalContext();  
   const componentRef = useRef();
 
   const handlePrint = useReactToPrint({
@@ -26,6 +27,10 @@ const Recipe = () => {
     // Fetch the API data when the component mounts
     fetchEdamamRecipes();
   }, []);
+
+  if(isLoading) {
+    return <Loading />
+  }
 
   if(edamamAPI.length === 0){
     return (

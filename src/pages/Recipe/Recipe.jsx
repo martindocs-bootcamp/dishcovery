@@ -10,10 +10,17 @@ import {
 } from '../../components'; 
 import { useGlobalContext } from '../../hooks/useGlobalContext'; 
 import { Link } from 'react-router-dom';
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
+import { useReactToPrint } from 'react-to-print';
+import { FaPrint } from "react-icons/fa";
 
 const Recipe = () => {
   const { edamamAPI, fetchEdamamRecipes } = useGlobalContext();  
+  const componentRef = useRef();
+
+  const handlePrint = useReactToPrint({
+    content: () => componentRef.current,
+  });
 
   useEffect(() => {
     // Fetch the API data when the component mounts
@@ -28,14 +35,14 @@ const Recipe = () => {
     )
   }
  
-  const{label, ingredientLines, image, ingredients, url} = edamamAPI[0].recipe;
+  const{label, ingredientLines, image, ingredients, url} = edamamAPI[0].recipe; 
 
   return edamamAPI.length !== 0 && (
-    <main className="home">
+    <main className="recipe" ref={componentRef}>
       <Row>
         <Col>
         <Title title={label}/>            
-          <div className='home-btn'>           
+          <div className='recipe-btn'>           
             <Link to="/recipe">
               <Button vatiant="primary">Nutritions</Button>
             </Link>
@@ -44,7 +51,14 @@ const Recipe = () => {
             </Link>            
             <Button variant='primary'>Likes</Button>
 
-            <ShareButtons url={url} />            
+            <ShareButtons url={url} />    
+
+            <button 
+              className='recipe-print'
+              onClick={handlePrint}
+            >
+              <FaPrint />
+            </button>        
           </div>
           <section className='home-content'>
             <MainContent ingrediens={ingredientLines}/>

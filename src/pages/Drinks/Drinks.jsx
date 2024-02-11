@@ -3,20 +3,21 @@ import Card from 'react-bootstrap/Card';
 import ListGroup from 'react-bootstrap/ListGroup';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import { Link } from 'react-router-dom';
-
+import { Link, useLocation } from 'react-router-dom';
 import { useGlobalContext } from '../../hooks/useGlobalContext'; 
 import { useEffect } from 'react';
+import { ShareButtons } from '../../components';
 
 const Drinks = () => {
   const { drinksAPI, fetchDrinksRecipes } = useGlobalContext();
-    
+  const location = useLocation();
+  
   const{
     strDrinkThumb, 
     strDrink,
     strCategory,
     strGlass,
-    strInstructions, 
+    strInstructions,     
   } = drinksAPI;
 
   useEffect(()=> {
@@ -40,22 +41,22 @@ const Drinks = () => {
   }
 
   const ingredientNames = extractData(drinksAPI);
-   
+
   return (
-    <section>
+    <section className='drinks'>
       <Link to="/recipe">
         <Button vatiant="primary">Nutritions</Button>
       </Link>
       <Link to="/drinks">
         <Button vatiant="primary">Drinks</Button>
       </Link>            
-      <Button variant='primary'>Likes</Button>
-
+      <Button variant='primary'>Likes</Button>      
       <Card className='drinks'>
         <Row>
           <Col>
-            <Card.Body>
-              <h2>{strDrink}</h2>
+            <Card.Body>              
+              <h2 className='drinks-title'>{strDrink}</h2>              
+
               <Card.Text>Ingredients</Card.Text> 
               <ListGroup variant="list-group-flush">
               {

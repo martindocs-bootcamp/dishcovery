@@ -10,10 +10,11 @@ const SharedLayout = () => {
       <Navigation />
       <Container fluid>
         <Row  className="content">
-          <Col md={2}>
+          {/* <Col md={2}>
             <Aside />
-          </Col>
-          <Col md={10}>
+          </Col> */}
+          {/* <Col md={10}> */}
+          <Col>
             {/* Content outlet for rendering routes */}
             <Outlet />            
           </Col>

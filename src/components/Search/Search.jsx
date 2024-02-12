@@ -25,12 +25,12 @@ const Search = () => {
   }
  
   return (
-    <Form className="search-form" onSubmit={handleSubmit}>
+    <Form className="search" onSubmit={handleSubmit}>
       <Form.Label htmlFor="search" className='search-label'>Search</Form.Label>
       <Form.Control 
         type="text" 
         name="search"
-        placeholder="Search..."
+        placeholder="Explore the world..."
         value={search}
         id="search"
         onChange={handleInputChange}

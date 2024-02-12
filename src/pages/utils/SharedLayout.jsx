@@ -8,17 +8,17 @@ const SharedLayout = () => {
   return (
     <>
       <Navigation />
-      <Container fluid>
-        <Row  className="content">
+      <Container fluid className="content">
+        {/* <Row> */}
           {/* <Col md={2}>
             <Aside />
           </Col> */}
           {/* <Col md={10}> */}
-          <Col>
+          {/* <Col> */}
             {/* Content outlet for rendering routes */}
             <Outlet />            
-          </Col>
-        </Row>
+          {/* </Col> */}
+        {/* </Row> */}
       </Container>
     </>
   )

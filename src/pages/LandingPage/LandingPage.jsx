@@ -1,4 +1,4 @@
-import landingImg from '../../assets/landing-img2.png';
+import landingImg from '../../assets/landing-img.png';
 import { Search } from '../../components';
 
 

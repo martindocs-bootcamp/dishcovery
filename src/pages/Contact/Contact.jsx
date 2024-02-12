@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
+import contactImg from '../../assets/contact.png';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -16,6 +17,14 @@ const Contact = () => {
       [name]: value,
     });
   };
+  
+  const handleClearForm = () => {    
+    setFormData({
+      senderName: '',
+      senderEmail: '',
+      senderMessage: '',
+    });
+  }
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -27,59 +36,74 @@ const Contact = () => {
       return;
     }
 
-    // Clear the form after submission
-    setFormData({
-      senderName: '',
-      senderEmail: '',
-      senderMessage: '',
-    });
+    handleClearForm();
 
     console.log('Form submitted successfully!');
   };
 
   return (
-    <Form onSubmit={handleSubmit} className='contact'>
-      <Form.Group controlId="formFullName">
-        <Form.Label>Full Name</Form.Label>
-        <Form.Control          
-          type="text"
-          placeholder="Enter your full name"
-          name="senderName"
-          value={formData.senderName}
-          onChange={handleChange}
-          required
-        />
-      </Form.Group>
+    <section className='contact'>
+      <img src={contactImg} className='contact-img' />
 
-      <Form.Group controlId="formEmail">
-        <Form.Label>Email address</Form.Label>
-        <Form.Control
-          type="email"
-          placeholder="Enter your email"
-          name="senderEmail"
-          value={formData.senderEmail}
-          onChange={handleChange}
-          required
-        />
-      </Form.Group>
+      <Form className='contact-form' onSubmit={(e)=> e.preventDefault()}>
+        <Form.Group controlId="formFullName" >
+          <Form.Label className='contact-form-label'>Full Name</Form.Label>
+          <Form.Control   
+            className='contact-form-input'       
+            type="text"
+            placeholder="Enter your full name"
+            name="senderName"
+            value={formData.senderName}
+            onChange={handleChange}
+            required
+          />
+        </Form.Group>
 
-      <Form.Group controlId="formMessage">
-        <Form.Label>Message</Form.Label>
-        <Form.Control
-          as="textarea"
-          rows={3}
-          placeholder="Enter your message"
-          name="senderMessage"
-          value={formData.senderMessage}
-          onChange={handleChange}
-          required
-        />
-      </Form.Group>
+        <Form.Group controlId="formEmail">
+          <Form.Label className='contact-form-label'>Email address</Form.Label>
+          <Form.Control
+            className='contact-form-input'
+            type="email"
+            placeholder="Enter your email"
+            name="senderEmail"
+            value={formData.senderEmail}
+            onChange={handleChange}
+            required
+          />
+        </Form.Group>
 
-      <Button variant="primary" type="submit">
-        Submit
-      </Button>
-    </Form>
+        <Form.Group controlId="formMessage">
+          <Form.Label className='contact-form-label'>Message</Form.Label>
+          <Form.Control
+            className='contact-form-input'
+            as="textarea"
+            rows={3}
+            placeholder="Enter your message"
+            name="senderMessage"
+            value={formData.senderMessage}
+            onChange={handleChange}
+            required
+          />
+        </Form.Group>
+
+        <div className='contact-form-btn'>
+          <Button 
+            type="submit" 
+            className='contact-form-btn-submit'
+            onClick={handleSubmit}
+          >
+            Submit
+          </Button>
+
+          <Button              
+            className='contact-form-btn-clear'
+            onClick={handleClearForm}
+          >
+            Clear
+          </Button>
+        </div>
+      </Form>
+    </section>
   );
 };
 

@@ -1,7 +1,67 @@
 .contact {
-
+  position: relative;
   padding-top: 80px;
-  min-width: 300px;
-  max-width: 600px; 
+
+  &-img {
+    min-width: 300px;
+    max-width: 650px;
+    width: 100%;
+  }
+
+  &-form {
+    position: absolute;
+    min-width: 300px;
+    max-width: 600px; 
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    &-label {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0,0,0,0);
+      border: 0;
+    }
+
+    &-input {
+      margin: 10px 0;      
+    }
+
+    &-input::placeholder {
+      color: #838383;
+    }
+
+    &-btn {
+      display: flex;
+      justify-content: center;
+      width: 100%;
+    }
+    
+    
+    &-btn-submit {
+      margin-right: 10px;
+      width: 70px;
+      background:  #668ac4;      
+      border: 0;      
+    }
+
+    &-btn-submit:hover {
+      background:  #516d9b;      
+    }
+    
+    &-btn-clear {
+      width: 70px;
+      background: #f54242;
+      border: 0;
+    }
+    
+    &-btn-clear:hover {
+      background: #d33a3a;
+    }
+  }
  
 }

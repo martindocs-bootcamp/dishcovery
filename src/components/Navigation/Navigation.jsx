@@ -1,11 +1,11 @@
 import { Link } from 'react-router-dom';
-import logo from "../../assets/logo.png";
+import Logo from '../Logo/Logo';
 
 const Navigation = () => {
   return (
-    <nav>      
+    <nav className='nav'>      
       <Link to="/">
-        <img src={logo} className="logo" />
+        <Logo />
       </Link>
     </nav>
   );

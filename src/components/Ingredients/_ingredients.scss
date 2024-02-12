@@ -1,8 +1,20 @@
-.ingredients{
+.ingredients {
     color: #093a3e;
-    text-align: center;  
+    text-align: center;
 }
 
-ul .li{
-    
+.listItems {
+    display: flex;
+    align-items: center;
+    list-style-type: none;
+}
+
+ul{
+    list-style-type: none;
+}
+
+.ingredientsImg {
+    width: 50px;
+    border-radius: 50px;
+    margin-right: 10px;
 }

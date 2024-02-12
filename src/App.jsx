@@ -5,6 +5,7 @@ import {
   Drinks,
   LandingPage,
   ErrorPage,  
+  Contact,
 } from './pages';
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
           <Route index element={<LandingPage/>} />
           <Route path="/recipe" element={<Recipe />} />
           <Route path="/drinks" element={<Drinks />} />
+          <Route path="/contact" element={<Contact />} />
           <Route path="*" element={<ErrorPage />} />          
         </Route>
       </Routes>

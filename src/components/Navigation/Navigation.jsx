@@ -10,9 +10,9 @@ const Navigation = () => {
       <Container className='nav-container'>
         <Link to="/"><Logo /></Link>        
         <Nav className="me-auto nav-menu">
-          <Nav.Link href="#home">Home</Nav.Link>
-          <Nav.Link href="#features">Favourites</Nav.Link>
-          <Nav.Link href="#pricing">Contact</Nav.Link>
+          <Nav.Link as={Link} to="/">Home</Nav.Link>
+          <Nav.Link as={Link} to="/favourites">Favourites</Nav.Link>
+          <Nav.Link as={Link} to="/contact">Contact</Nav.Link>
         </Nav>
       </Container>
     </Navbar>

@@ -9,6 +9,7 @@ import Ingredients from './Ingredients/Ingredients';
 import ImageFood from './ImageFood/ImageFood';
 import ShareButtons from "./ShareButtons/ShareButtons";
 import Loading from "./Loading/Loading";
+import Footer from "./Footer/Footer";
 
 export { 
   Navigation, 
@@ -22,4 +23,5 @@ export {
   ImageFood,
   ShareButtons,
   Loading,
+  Footer,
 };

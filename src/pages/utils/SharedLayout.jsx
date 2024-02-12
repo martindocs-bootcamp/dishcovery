@@ -1,5 +1,5 @@
 import { Outlet } from "react-router-dom";
-import { Navigation, Aside } from "../../components";
+import { Navigation, Footer, Aside } from "../../components";
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -20,6 +20,7 @@ const SharedLayout = () => {
           {/* </Col> */}
         {/* </Row> */}
       </Container>
+      <Footer />
     </>
   )
 }

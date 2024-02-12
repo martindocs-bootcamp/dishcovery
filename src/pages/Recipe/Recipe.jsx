@@ -45,8 +45,12 @@ const Recipe = () => {
   return edamamAPI.length !== 0 && (
     <main className="recipe" ref={componentRef}>
       <Row>
+      <Col>
+          <ImageFood image={image} />
+          <Ingredients ingredients={ingredients}/>
+        </Col>
         <Col>
-        <Title title={label}/>            
+               
           <div className='recipe-btn'>           
             <Link to="/recipe">
               <Button vatiant="primary">Nutritions</Button>
@@ -64,15 +68,13 @@ const Recipe = () => {
             >
               <FaPrint />
             </button>        
+            <Title title={label}/>     
           </div>
           <section className='home-content'>
             <MainContent ingrediens={ingredientLines}/>
           </section>
         </Col>
-        <Col>
-          <ImageFood image={image} />
-          <Ingredients ingredients={ingredients}/>
-        </Col>
+        
       </Row>
     </main>
   )

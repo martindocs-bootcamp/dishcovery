@@ -1,29 +1,23 @@
-
-function Ingredients({ingredients}) {
-
+function Ingredients({ ingredients }) {
   return (
-    <div className="ingredients m-4">
-      <h3 className="mb-3">Ingredients</h3>
-      <section>
+    <section className="ingredients">
+     
+      <h3>Ingredients</h3>
         {/* Render each ingredient in a list */}
-        <ul className="list-group ">
+        <ul className="list-group">
           {ingredients.map((ingredient, index) => (
-            <li key={index} className="list-group-item ">
-              <div style={{ display: "flex", alignItems: "center" }}>
-                {ingredient.text}
+            <li key={index} className="list-group-item">
+              <div className="listItems">
                 {ingredient.image && (
-                  <img
-                    src={ingredient.image}
-                    alt={ingredient.text}
-                    style={{ width: "50px", marginLeft: "10px",borderRadius:"50px" }}
-                  />
+                  <img src={ingredient.image} alt={ingredient.text} className="ingredientsImg" />
                 )}
+                {ingredient.text}
               </div>
             </li>
           ))}
         </ul>
-      </section>
-    </div>
+      
+    </section>
   );
 }
 export default Ingredients;

@@ -1,15 +1,8 @@
 .landing-page {
-    container: flex;
-    color:#eebe87;
-    align-items: flex-end;
-    justify-content: center;
-    font-size: 800%;
-    font-weight: bold;
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    text-align: right;
+    position: relative;
 
-
-
-
-
+    &-img {
+        min-width: 300px;
+        max-width: 650px;
+    }
 };

@@ -1,8 +1,13 @@
+import landingImg from '../../assets/landing-img2.png';
+import { Search } from '../../components';
+
 
 const LandingPage = () => {
     return (
       <section className="landing-page">
-        Time To Dishcover
+
+        <Search />
+        <img src={landingImg} className='landing-page-img' />
       </section>
     )
   }

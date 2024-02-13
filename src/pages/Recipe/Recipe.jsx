@@ -43,7 +43,6 @@ const Recipe = () => {
  
   const{label, ingredientLines, image, ingredients, url, totalNutrients, totalDaily} = edamamAPI[0].recipe; 
 
-  console.log(edamamAPI[0]);
   return edamamAPI.length !== 0 && (
     <main className="recipe" ref={componentRef}>
       <Row>
@@ -70,9 +69,7 @@ const Recipe = () => {
               <FaPrint />
             </button>        
             <Title title={label}/> 
-{/* 
-            <Nutrition nutritions={totalNutrients}/>    
-            <Nutrition daily={totalDaily}/>   */}
+
             <Nutrition nutritions={totalNutrients} daily={totalDaily}/>  
           </div>
           <section className='home-content'>

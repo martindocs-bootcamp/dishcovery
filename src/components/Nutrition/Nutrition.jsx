@@ -2,13 +2,12 @@ import React, { useState } from "react";
 
 const Nutrition = ({ nutritions, daily }) => {
   const [servings, setServings] = useState(1);
-  console.log(daily);
+
   // Check if nutritions and daily are undefined or null, if so, set them to empty objects
   nutritions = nutritions || {};
   //   nutritions =  Object.values(nutritions).map(obj => ({ ...obj }))|| {};
   daily = daily || {};
 
-  console.log(nutritions);
   // Typical calorie content per unit values
   const caloriesPerUnit = {
     FAT: 9, // 9 Calories per gram for fat
@@ -45,9 +44,8 @@ const Nutrition = ({ nutritions, daily }) => {
   };
 
   const outputArray = Object.values(daily).map((obj) => ({ ...obj }));
-  console.log(outputArray);
+
   const outputArray2 = Object.values(nutritions).map((obj) => ({ ...obj }));
-  console.log(outputArray2);
 
   const combinedArray = outputArray.map((obj1) => {
     const matchingObj = outputArray2.find((obj2) => obj2.label === obj1.label);
@@ -60,7 +58,6 @@ const Nutrition = ({ nutritions, daily }) => {
     };
   });
 
-  console.log(combinedArray);
   return (
     <div>
       <hr />

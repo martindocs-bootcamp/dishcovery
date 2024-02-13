@@ -2,6 +2,7 @@ import { useState } from 'react';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import contactImg from '../../assets/contact.png';
+import { useGlobalContext } from '../../hooks/useGlobalContext'; 
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -9,6 +10,8 @@ const Contact = () => {
     senderEmail: '',
     senderMessage: '',
   });
+
+  const{ sendEmail } = useGlobalContext();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -35,6 +38,8 @@ const Contact = () => {
       console.log('Please enter a valid email address.');
       return;
     }
+
+    sendEmail(formData);
 
     handleClearForm();
 

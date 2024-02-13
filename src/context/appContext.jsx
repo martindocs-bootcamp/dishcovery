@@ -11,6 +11,10 @@ import {
 
     GET_DRINKS_RECIPES_BEGIN,
     GET_DRINKS_RECIPES_SUCCESS,
+
+    SEND_MESSAGE_BEGIN,
+    SEND_MESSAGE_SUCCESS,
+    SEND_MESSAGE_ERROR,
 } from './actions';
 
 import edamamData from '../data/edamam.json';
@@ -66,6 +70,23 @@ export const AppProvider = ({children}) => {
         }
     }
 
+    const sendEmail = async(props) => {        
+        const{senderName, senderEmail, senderMessage} = props;
+
+        dispatch({type: SEND_MESSAGE_BEGIN});
+        try {
+            await axios.post('/.netlify/functions/sendEmail',{                 
+                  name: senderName,
+                  email: senderEmail,
+                  message: senderMessage,                
+            });            
+            
+            dispatch({type: SEND_MESSAGE_SUCCESS});
+        }catch(err) {
+            dispatch({type: SEND_MESSAGE_ERROR});
+        }
+    }
+
     return (
         <AppContext.Provider 
             value={{
@@ -73,6 +94,7 @@ export const AppProvider = ({children}) => {
                 handleInput,
                 fetchEdamamRecipes,
                 fetchDrinksRecipes,
+                sendEmail,
             }}
         >
             {children}
@@ -81,5 +103,8 @@ export const AppProvider = ({children}) => {
 }
 
 AppProvider.propTypes = {
-    children: PropTypes.object
+    children: PropTypes.object,
+    senderName: PropTypes.string,
+    senderEmail: PropTypes.string,
+    senderMessage: PropTypes.string,
 }

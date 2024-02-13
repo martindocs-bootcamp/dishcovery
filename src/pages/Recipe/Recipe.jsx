@@ -45,12 +45,11 @@ const Recipe = () => {
   return edamamAPI.length !== 0 && (
     <main className="recipe" ref={componentRef}>
       <Row>
-      <Col>
+        <Col>
           <ImageFood image={image} />
           <Ingredients ingredients={ingredients}/>
         </Col>
-        <Col>
-               
+        <Col>               
           <div className='recipe-btn'>           
             <Link to="/recipe">
               <Button vatiant="primary">Nutritions</Button>
@@ -73,8 +72,7 @@ const Recipe = () => {
           <section className='home-content'>
             <MainContent ingrediens={ingredientLines}/>
           </section>
-        </Col>
-        
+        </Col>        
       </Row>
     </main>
   )

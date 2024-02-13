@@ -1,4 +1,18 @@
 .home {
+}
 
+.fav-btn {
+  background-color: #e8e5da;
+  color: #5e869c;
+  border: none;
+  border-radius: 40px;
+  padding: 0px 10px;
+  font-size: 25px;
+  transition: all 150ms ease-in-out;
+}
 
+.fav-btn:hover {
+  color: #e8e5da;
+  background-color: #edbe86;
+  opacity: 0.8;
 }

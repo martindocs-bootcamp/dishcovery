@@ -1,4 +1,16 @@
 .fav {
+}
 
-  
+.close-btn {
+  background-color: #edbe86;
+  transition: all 150ms ease-in-out;
+  border: none;
+}
+
+.close-btn:hover {
+  background-color: #5e869c;
+}
+
+.close-btn:active {
+  opacity: 0.5;
 }

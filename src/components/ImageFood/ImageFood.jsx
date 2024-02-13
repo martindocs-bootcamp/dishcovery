@@ -1,8 +1,15 @@
+import { PropTypes } from 'prop-types';
+import img from '../../assets/img-food.jpg';
+
 function ImageFood({ image }) {
   return (
-    // Render the image with its URL as 'src' and set the width
-    <img className="imageFood" src={image} alt="Food" />
+    // TEMP img
+    <img className="imageFood" src={img} alt="Food" />
   );
+}
+
+ImageFood.propTypes = {
+  image: PropTypes.string,
 }
 
 export default ImageFood;

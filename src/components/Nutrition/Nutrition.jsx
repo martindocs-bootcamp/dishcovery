@@ -91,6 +91,7 @@ const Nutrition = ({ nutritions, daily }) => {
       <p>Total Calories Served: {calculateTotalCalories()}</p>
       <hr />
     </div>
+    
   );
 };
 

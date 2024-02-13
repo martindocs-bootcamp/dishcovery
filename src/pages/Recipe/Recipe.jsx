@@ -14,6 +14,7 @@ import { Link } from 'react-router-dom';
 import { useEffect, useRef } from 'react';
 import { useReactToPrint } from 'react-to-print';
 import { FaPrint } from "react-icons/fa";
+import Nutrition from '../../components/Nutrition/Nutrition';
 
 const Recipe = () => {
   const { isLoading, edamamAPI, fetchEdamamRecipes } = useGlobalContext();  
@@ -40,8 +41,9 @@ const Recipe = () => {
     )
   }
  
-  const{label, ingredientLines, image, ingredients, url} = edamamAPI[0].recipe; 
+  const{label, ingredientLines, image, ingredients, url, totalNutrients, totalDaily} = edamamAPI[0].recipe; 
 
+  console.log(edamamAPI[0]);
   return edamamAPI.length !== 0 && (
     <main className="recipe" ref={componentRef}>
       <Row>
@@ -67,7 +69,11 @@ const Recipe = () => {
             >
               <FaPrint />
             </button>        
-            <Title title={label}/>     
+            <Title title={label}/> 
+{/* 
+            <Nutrition nutritions={totalNutrients}/>    
+            <Nutrition daily={totalDaily}/>   */}
+            <Nutrition nutritions={totalNutrients} daily={totalDaily}/>  
           </div>
           <section className='home-content'>
             <MainContent ingrediens={ingredientLines}/>

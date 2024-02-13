@@ -3,7 +3,7 @@ import img from '../../assets/img-food.jpg';
 
 function ImageFood({ image }) {
   return (
-    // TEMP img
+    // TEMP img add alt
     <img className="imageFood" src={img} alt="Food" />
   );
 }

@@ -1,0 +1,39 @@
+.ingridients-card {
+    background: transparent;
+    border: 0;
+
+    &-header {
+        background: transparent;
+        border: 0;
+        text-align: center;
+    }
+
+    &-btn {
+        margin-right: 10px;
+        width: 150px;
+        background:  #668ac4;      
+        border: 0; 
+    }
+    &-btn:hover {
+        background:  #516d9b;      
+    }
+
+    &-title {
+        padding-left: 15px;
+    }
+
+    &-img {
+        display: flex;
+        align-items: center;
+
+        img{
+            border-radius: 50%;
+            width: 70px;
+            margin-right: 20px;
+        }
+
+        p {
+            font-size: 18px;
+        }
+    }
+}

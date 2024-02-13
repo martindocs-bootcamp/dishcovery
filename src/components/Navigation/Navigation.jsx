@@ -8,13 +8,6 @@ import { useGlobalContext } from '../../hooks/useGlobalContext';
 const Navigation = () => {
   const { handleResetState } = useGlobalContext();
 
-  // const handleHomeCLick = () => {
-  //   handleInput({
-  //     name: 'search',
-  //     value: ''
-  //   });
-  // }
-
   return (    
     <Navbar className='nav'>
       <Container className='nav-container'>

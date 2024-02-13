@@ -1,5 +1,6 @@
 import {
     HANDLE_INPUT,
+    HANDLE_RESET_STATE,
 
     GET_EDAMAM_RECIPES_BEGIN,
     GET_EDAMAM_RECIPES_SUCCESS,
@@ -12,6 +13,15 @@ import {
     SEND_MESSAGE_ERROR,
 } from './actions';
 
+const initialState = {
+    isLoading: false,
+    edamamAPI: [],
+    drinksAPI: [],
+    search: '',
+    sendingEmail: false,
+    errorMessage: null,
+};
+
 const reducer = (state, action) => {
 
     switch(action.type){
@@ -19,6 +29,11 @@ const reducer = (state, action) => {
             return {
                 ...state,
                 [action.payload.name]: action.payload.value
+            }
+
+        case HANDLE_RESET_STATE:
+            return {
+                ...initialState
             }
 
         case GET_EDAMAM_RECIPES_BEGIN:

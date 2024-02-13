@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import { initialState } from "./initState";
 import {
     HANDLE_INPUT,
+    HANDLE_RESET_STATE,
 
     GET_EDAMAM_RECIPES_BEGIN,
     GET_EDAMAM_RECIPES_SUCCESS,
@@ -30,22 +31,26 @@ export const AppProvider = ({children}) => {
         dispatch({type: HANDLE_INPUT, payload: {value, name} })
     }
 
+    const handleResetState = () => {
+        dispatch({type: HANDLE_RESET_STATE});
+    }
+
     // Fetch data from Edeme recepies
     const fetchEdamamRecipes = async () => {      
 
         const {search} = state;
-        // const edamamApiID = import.meta.env.VITE_EDAMAM_APP_ID; // locally
-        // const edamamApiKey = import.meta.env.VITE_EDAMAM_APP_KEY; // locally
-        const edamamApiID = process.env.EDAMAM_APP_ID; // Netlify
-        const edamamApiKey = process.env.EDAMAM_APP_KEY; // Netlify
+        const edamamApiID = import.meta.env.VITE_EDAMAM_APP_ID; // locally
+        const edamamApiKey = import.meta.env.VITE_EDAMAM_APP_KEY; // locally
+        // const edamamApiID = process.env.EDAMAM_APP_ID; // Netlify
+        // const edamamApiKey = process.env.EDAMAM_APP_KEY; // Netlify
 
         if (state.edamamAPI.length === 0) {
             dispatch({type: GET_EDAMAM_RECIPES_BEGIN})
             try {
-                const {data} = await axios.get(`https://api.edamam.com/api/recipes/v2?type=public&q=${search}&app_id=${edamamApiID}&app_key=${edamamApiKey}`);
+                // const {data} = await axios.get(`https://api.edamam.com/api/recipes/v2?type=public&q=${search}&app_id=${edamamApiID}&app_key=${edamamApiKey}`);
 
-                const {hits:results} = data; // Netlify
-                // const {hits:results} = edamamData; // locally
+                // const {hits:results} = data; // Netlify
+                const {hits:results} = edamamData; // locally
             
                 dispatch({type: GET_EDAMAM_RECIPES_SUCCESS, payload: {results}})
             }catch(err) {
@@ -60,10 +65,10 @@ export const AppProvider = ({children}) => {
             dispatch({type: GET_DRINKS_RECIPES_BEGIN});
             try {
                 
-                const {data} = await axios.get('https://www.thecocktaildb.com/api/json/v1/1/random.php'); 
+                // const {data} = await axios.get('https://www.thecocktaildb.com/api/json/v1/1/random.php'); 
             
-                const results = data.drinks[0]; // Netlify
-                // const results = drinksData.drinks[0]; // locally
+                // const results = data.drinks[0]; // Netlify
+                const results = drinksData.drinks[0]; // locally
                               
                 dispatch({type: GET_DRINKS_RECIPES_SUCCESS, payload:{results}});
             }catch(err) {
@@ -94,6 +99,7 @@ export const AppProvider = ({children}) => {
             value={{
                 ...state,
                 handleInput,
+                handleResetState,
                 fetchEdamamRecipes,
                 fetchDrinksRecipes,
                 sendEmail,

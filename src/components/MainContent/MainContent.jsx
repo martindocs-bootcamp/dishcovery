@@ -8,15 +8,13 @@ const MainContent = ({ingrediens}) => {
 
   return (
     <div className="main overflow-auto">
-      <h3>Instructions</h3>
+      <h3>Nutritions</h3>
       <ul>
         {/* Rendering the ingrediens of the first meal  */}
         {ingrediens.map((ingredient, index) => (
           <li key={index}>{ingredient}</li>
         ))}
-      </ul>
-
-      {/* {strInstructions} */}
+      </ul>     
     </div>
   );
 };

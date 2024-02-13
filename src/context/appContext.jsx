@@ -40,10 +40,10 @@ export const AppProvider = ({children}) => {
         if (state.edamamAPI.length === 0) {
             dispatch({type: GET_EDAMAM_RECIPES_BEGIN})
             try {
-                // const {data} = await axios.get(`https://api.edamam.com/api/recipes/v2?type=public&q=${search}&app_id=${edamamApiID}&app_key=${edamamApiKey}`);
+                const {data} = await axios.get(`https://api.edamam.com/api/recipes/v2?type=public&q=${search}&app_id=${edamamApiID}&app_key=${edamamApiKey}`);
 
-                // const {hits:results} = data;
-                const {hits:results} = edamamData;
+                const {hits:results} = data;
+                // const {hits:results} = edamamData;
             
                 dispatch({type: GET_EDAMAM_RECIPES_SUCCESS, payload: {results}})
             }catch(err) {
@@ -58,10 +58,10 @@ export const AppProvider = ({children}) => {
             dispatch({type: GET_DRINKS_RECIPES_BEGIN});
             try {
                 
-                // const {data} = await axios.get('https://www.thecocktaildb.com/api/json/v1/1/random.php');
+                const {data} = await axios.get('https://www.thecocktaildb.com/api/json/v1/1/random.php');
             
-                // const results = data.drinks[0];
-                const results = drinksData.drinks[0];
+                const results = data.drinks[0];
+                // const results = drinksData.drinks[0];
                               
                 dispatch({type: GET_DRINKS_RECIPES_SUCCESS, payload:{results}});
             }catch(err) {

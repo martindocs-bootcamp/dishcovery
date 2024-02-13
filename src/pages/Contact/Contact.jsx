@@ -100,7 +100,8 @@ const Contact = () => {
             Submit
           </Button>
 
-          <Button              
+          <Button    
+            type="button"          
             className='contact-form-btn-clear'
             onClick={handleClearForm}
           >

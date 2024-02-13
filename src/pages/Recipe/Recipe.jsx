@@ -13,7 +13,8 @@ import { useGlobalContext } from '../../hooks/useGlobalContext';
 import { Link } from 'react-router-dom';
 import { useEffect, useRef } from 'react';
 import { useReactToPrint } from 'react-to-print';
-import { FaPrint } from "react-icons/fa";
+// import { FaPrint } from "react-icons/fa";
+import {RecipeCard, IngridientsCard} from '../../components';
 
 const Recipe = () => {
   const { isLoading, edamamAPI, fetchEdamamRecipes } = useGlobalContext();  
@@ -34,23 +35,47 @@ const Recipe = () => {
 
   if(edamamAPI.length === 0){
     return (
-      <section className="">
+      <section className="no-recipe">
         Search for recipe
       </section>
     )
   }
  
-  const{label, ingredientLines, image, ingredients, url} = edamamAPI[0].recipe; 
+  const{label, image, ingredients, url, source} = edamamAPI[0].recipe; 
 
   return edamamAPI.length !== 0 && (
-    <main className="recipe" ref={componentRef}>
+    <section className="recipe" ref={componentRef}>
       <Row>
         <Col>
+          <RecipeCard 
+            handlePrint={handlePrint}
+            title={label}
+            image={image}
+            url={url}
+            source={source}
+          />
+          {/* <Title title={label}/>
           <ImageFood image={image} />
+          <ShareButtons url={url} />
+          <button 
+              className='recipe-print'
+              onClick={handlePrint}
+            >
+              <FaPrint />
+          </button> 
           <Ingredients ingredients={ingredients}/>
+          <h3>Preparation</h3>
+          <Button 
+              type="button"
+              className='btn-source'
+          >Source</Button>             */}
         </Col>
-        <Col>               
-          <div className='recipe-btn'>           
+        <Col>      
+          <IngridientsCard 
+            ingredients={ingredients} 
+            
+          />         
+           {/* <div className='recipe-btn'>           
             <Link to="/recipe">
               <Button vatiant="primary">Nutritions</Button>
             </Link>
@@ -59,7 +84,7 @@ const Recipe = () => {
             </Link>            
             <Button variant='primary'>Likes</Button>
 
-            <ShareButtons url={url} />    
+            <ShareButtons url={url} />     
 
             <button 
               className='recipe-print'
@@ -67,14 +92,14 @@ const Recipe = () => {
             >
               <FaPrint />
             </button>        
-            <Title title={label}/>     
-          </div>
-          <section className='home-content'>
+            
+          </div>           */}
+          {/* <section className='recipe-content'>
             <MainContent ingrediens={ingredientLines}/>
-          </section>
+          </section> */}
         </Col>        
       </Row>
-    </main>
+    </section>
   )
 }
   

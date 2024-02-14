@@ -13,6 +13,8 @@ const Contact = () => {
 
   const{ sendEmail } = useGlobalContext();
 
+  const [imageLoaded, setImageLoaded] = useState(false);
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({
@@ -47,73 +49,74 @@ const Contact = () => {
   };
 
   return (
-    <section className='contact'>
-      {
-        contactImg && 
-        <>
-          <img src={contactImg} className='contact-img' />
+    <section className='contact'>      
+        <img 
+          src={contactImg} 
+          className='contact-img' 
+          onLoad={() => setImageLoaded(true)}  
+        />
+        {
+          imageLoaded && 
+            <Form className='contact-form' onSubmit={(e)=> e.preventDefault()}>
+              <Form.Group controlId="formFullName" >
+                <Form.Label className='contact-form-label'>Full Name</Form.Label>
+                <Form.Control   
+                  className='contact-form-input'       
+                  type="text"
+                  placeholder="Enter your full name"
+                  name="senderName"
+                  value={formData.senderName}
+                  onChange={handleChange}
+                  required
+                />
+              </Form.Group>
 
-          <Form className='contact-form' onSubmit={(e)=> e.preventDefault()}>
-            <Form.Group controlId="formFullName" >
-              <Form.Label className='contact-form-label'>Full Name</Form.Label>
-              <Form.Control   
-                className='contact-form-input'       
-                type="text"
-                placeholder="Enter your full name"
-                name="senderName"
-                value={formData.senderName}
-                onChange={handleChange}
-                required
-              />
-            </Form.Group>
+              <Form.Group controlId="formEmail">
+                <Form.Label className='contact-form-label'>Email address</Form.Label>
+                <Form.Control
+                  className='contact-form-input'
+                  type="email"
+                  placeholder="Enter your email"
+                  name="senderEmail"
+                  value={formData.senderEmail}
+                  onChange={handleChange}
+                  required
+                />
+              </Form.Group>
 
-            <Form.Group controlId="formEmail">
-              <Form.Label className='contact-form-label'>Email address</Form.Label>
-              <Form.Control
-                className='contact-form-input'
-                type="email"
-                placeholder="Enter your email"
-                name="senderEmail"
-                value={formData.senderEmail}
-                onChange={handleChange}
-                required
-              />
-            </Form.Group>
+              <Form.Group controlId="formMessage">
+                <Form.Label className='contact-form-label'>Message</Form.Label>
+                <Form.Control
+                  className='contact-form-input'
+                  as="textarea"
+                  rows={3}
+                  placeholder="Enter your message"
+                  name="senderMessage"
+                  value={formData.senderMessage}
+                  onChange={handleChange}
+                  required
+                />
+              </Form.Group>
 
-            <Form.Group controlId="formMessage">
-              <Form.Label className='contact-form-label'>Message</Form.Label>
-              <Form.Control
-                className='contact-form-input'
-                as="textarea"
-                rows={3}
-                placeholder="Enter your message"
-                name="senderMessage"
-                value={formData.senderMessage}
-                onChange={handleChange}
-                required
-              />
-            </Form.Group>
+              <div className='contact-form-btn'>
+                <Button 
+                  type="submit" 
+                  className='contact-form-btn-submit'
+                  onClick={handleSubmit}
+                >
+                  Submit
+                </Button>
 
-            <div className='contact-form-btn'>
-              <Button 
-                type="submit" 
-                className='contact-form-btn-submit'
-                onClick={handleSubmit}
-              >
-                Submit
-              </Button>
-
-              <Button    
-                type="button"          
-                className='contact-form-btn-clear'
-                onClick={handleClearForm}
-              >
-                Clear
-              </Button>
-            </div>
-          </Form>
-        </>
-      }
+                <Button    
+                  type="button"          
+                  className='contact-form-btn-clear'
+                  onClick={handleClearForm}
+                >
+                  Clear
+                </Button>
+              </div>
+            </Form>
+        }      
       
     </section>
   );

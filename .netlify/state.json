@@ -1,0 +1,19 @@
+{
+	"geolocation": {
+		"data": {
+			"city": "Norwich",
+			"country": {
+				"code": "GB",
+				"name": "United Kingdom"
+			},
+			"subdivision": {
+				"code": "ENG",
+				"name": "England"
+			},
+			"timezone": "Europe/London",
+			"latitude": 52.6348,
+			"longitude": 1.1062
+		},
+		"timestamp": 1707915024712
+	}
+}

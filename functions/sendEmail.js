@@ -6,14 +6,17 @@ export const handler = async (e, context) => {
   const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
-      user: import.meta.env.EMAIL_USER,
-      pass: import.meta.env.EMAIL_PASS,
+      user: process.env.EMAIL_USER,
+      pass: process.env.EMAIL_PASS,
+      // user: import.meta.env.EMAIL_USER,
+      // pass: import.meta.env.EMAIL_PASS,
     },
   });
 
   const mailOptions = {
     from: email,
-    to: import.meta.env.EMAIL_USER,
+    to: process.env.EMAIL_USER,
+    // to: import.meta.env.EMAIL_USER,
     subject: 'New Email',
     text: `Name: ${name}\nEmail: ${email}\nMessage: ${message}`,
   };

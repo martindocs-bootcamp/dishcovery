@@ -14,6 +14,8 @@ export default defineConfig(({mode}) => {
     define: {
       'process.env.EDAMAM_APP_ID': JSON.stringify(env.EDAMAM_APP_ID),
       'process.env.EDAMAM_APP_KEY': JSON.stringify(env.EDAMAM_APP_KEY),
+      'process.env.EMAIL_USER': JSON.stringify(env.EMAIL_USER),
+      'process.env.EMAIL_PASS': JSON.stringify(env.EMAIL_PASS),
     },
   }
 })

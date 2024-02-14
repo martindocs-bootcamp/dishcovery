@@ -150,7 +150,11 @@ https://dishcoveryapp.netlify.app/
 ## Usage
 
 - Enter your desired dish or cuisine in the search bar.
+- 
+- ![image](https://github.com/martindocs-bootcamp/dishcovery/blob/25963dc962f0af8427358b4b17303489c2b3aa0e/src/assets/Picture1.png)
+- 
 - Hit enter on your keyboard to retrieve recipe suggestions.
+- 
 - Explore the displayed recipe instructions, ingredients, drink suggestion and nutritional information.
 - Print the chosen recipe using the print icon.
 - If thirsty, use the app to find a matching drink recipe. 

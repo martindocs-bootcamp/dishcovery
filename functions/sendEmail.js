@@ -11,6 +11,7 @@ export const handler = async (e, context) => {
     auth: {
       user: process.env.EMAIL_USER,
       pass: process.env.EMAIL_PASS,
+      
       // user: import.meta.env.EMAIL_USER,
       // pass: import.meta.env.EMAIL_PASS,
     },

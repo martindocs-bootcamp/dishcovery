@@ -12,6 +12,7 @@ import Loading from "./Loading/Loading";
 import Footer from "./Footer/Footer";
 import RecipeCard from './RecipeCard/RecipeCard';
 import IngridientsCard from './IngridientsCard/IngridientsCard';
+import Nutrition from "./Nutrition/Nutrition";
 
 export { 
   Navigation, 
@@ -28,4 +29,5 @@ export {
   Footer,
   RecipeCard,
   IngridientsCard,
+  Nutrition,
 };

@@ -1,9 +1,11 @@
 .share {
 
   margin: 0 5px;
-
+  
+  // justify-self:flex-end;
+  
   &-btn {
-    margin: 5px;
+    margin: 5px 10px;
   }
 
   &-btn:hover {

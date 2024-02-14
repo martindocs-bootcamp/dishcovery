@@ -15,13 +15,16 @@ const ShareButtons = ({url}) => {
   return (   
     <>
       <FacebookShareButton url={url} className="share-btn">
-        <FacebookIcon size={32} round />
+        <FacebookIcon size={36} round />
+        <p>Facebook</p>
       </FacebookShareButton>     
       <LinkedinShareButton url={url} className="share-btn">
-        <LinkedinIcon size={32} round />
+        <LinkedinIcon size={36} round />
+        <p>Linkedin</p>
       </LinkedinShareButton>
       <TwitterShareButton url={url} className="share-btn">
-        <TwitterIcon size={32} round />
+        <TwitterIcon size={36} round />
+        <p>Twitter</p>
       </TwitterShareButton>
     </>   
   )

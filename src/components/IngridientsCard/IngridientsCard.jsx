@@ -4,28 +4,29 @@ import { PropTypes } from 'prop-types';
 
 const IngridientsCard = ({ingredients}) => {
   return (
-    <Card className='ingridients-card'>
+    <Card className='ingridients-card'>    
         <Card.Header className='ingridients-card-header'>
-            <Card.Link                 
-                className="btn btn-primary ingridients-card-btn" 
-                href="#ingridients"
-            >Ingridients</Card.Link>  
-            <Card.Link                  
-                className="btn btn-primary ingridients-card-btn" 
-                href="#nutritions"
-            >Nutritions</Card.Link>
+            <h3 >{ingredients.length} Ingridients</h3>
         </Card.Header>
-
         <Card.Body>
-            <Card.Title id="ingridients" className='ingridients-card-title'>Ingridients</Card.Title>
-                <ListGroup variant="flush">
+            {/* <div className='ingridients-card-header'>
+                <Card.Link                      
+                    className='ingridients-card-title'
+                    href="#ingridients"
+                    >Ingridients</Card.Link>| 
+                <Card.Link    
+                    className='ingridients-card-title'                 
+                    href="#nutritions"
+                >Nutritions</Card.Link>
+            </div> */}
+                <ListGroup variant="flush" id="ingridients">
                     {
-                        ingredients.map((ingredient) => {
-                            const{image, food, text, foodId} = ingredient;
+                        ingredients.map((ingredient, index) => {
+                            const{image, food, text} = ingredient;
                             
                             return (
                                 <ListGroup.Item 
-                                    key={foodId}                        
+                                    key={index}                        
                                 >
                                     <div className='ingridients-card-img'>
                                         <img 
@@ -39,12 +40,6 @@ const IngridientsCard = ({ingredients}) => {
                         })
                     }
                 </ListGroup> 
-
-                <Card.Title id="nutritions">Nutritions</Card.Title>
-                    <ListGroup variant="flush">
-                        
-                    </ListGroup>
-
         </Card.Body> 
     </Card>
   )

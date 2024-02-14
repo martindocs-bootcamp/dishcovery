@@ -14,7 +14,7 @@ export const handler = async (e, context) => {
   });
 
   const mailOptions = {
-    from: email,
+    from: process.env.EMAIL_USER,
     to: process.env.EMAIL_USER,
     // to: import.meta.env.EMAIL_USER,
     subject: 'New Email',

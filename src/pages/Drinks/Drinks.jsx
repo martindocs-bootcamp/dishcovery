@@ -1,4 +1,3 @@
-import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import ListGroup from 'react-bootstrap/ListGroup';
 import Row from 'react-bootstrap/Row';
@@ -18,7 +17,7 @@ const Drinks = () => {
     strGlass,
     strInstructions,     
   } = drinksAPI;
-
+ 
   useEffect(()=> {
     fetchDrinksRecipes();
   },[])
@@ -46,48 +45,54 @@ const Drinks = () => {
   }
 
   return (
-    <section className='drinks'>
-      <Link to="/recipe">
-        <Button vatiant="primary">Nutritions</Button>
-      </Link>
-      <Link to="/drinks">
-        <Button vatiant="primary">Drinks</Button>
-      </Link>            
-      <Button variant='primary'>Likes</Button>      
+    <section className='drinks'>      
       <Card className='drinks'>
-        <Row>
-          <Col>
-            <Card.Body>              
-              <h2 className='drinks-title'>{strDrink}</h2>              
+          <h2 className='drinks-title'>{strDrink}</h2>              
+        <Card.Body className='pb-0'>              
+          <Row>
+            <Col md="6">
+              <Card.Img variant="top" className='drinks-img' src={strDrinkThumb} alt={`Image of ${strDrink} drink`} />
 
-              <Card.Text>Ingredients</Card.Text> 
-              <ListGroup variant="list-group-flush">
-              {
-                ingredientNames.map((item, index) => {
-                  const{ingredient, measure} = item;
+              <div className='d-flex align-items-baseline'>
+                <Card.Link
+                  className="btn btn-primary drinks-btn mt-3"
+                  as={Link}
+                  to="/recipe"
+                  >
+                  Back to Recipe
+                </Card.Link>
+              </div>
+            </Col>
 
-                  return (
-                    <ListGroup.Item 
-                      key={index}
-                    >
-                      {ingredient} {measure}
-                    </ListGroup.Item>
-                  )
-                })
-              }               
-              </ListGroup>  
-              <h3>Instructions</h3>
-              <Card.Text>{strInstructions}</Card.Text>   
-              <Card.Text>Serve in {strGlass}</Card.Text>   
+            <Col md="6">
+                <h4>{ingredientNames.length} Ingredients</h4> 
+                <ListGroup variant="list-group-flush">
+                {
+                  ingredientNames.map((item, index) => {
+                    
+                    const{ingredient, measure} = item;
 
-              <h4>Category</h4>         
-              <Card.Text>{strCategory}</Card.Text>
-            </Card.Body>
-          </Col>
-          <Col>
-            <Card.Img variant="top" src={strDrinkThumb} />
-          </Col>
-        </Row>
+                    return (
+                      <ListGroup.Item 
+                        key={index}   
+                        className='drinks-list-item'    
+                      >
+                        {ingredient} {measure}
+                      </ListGroup.Item>
+                    )
+                  })
+                }               
+                </ListGroup>  
+
+                <h4>Instructions</h4>
+                <Card.Text>{strInstructions}</Card.Text>   
+                <Card.Text className='drinks-other'>Serve in {strGlass}</Card.Text>   
+
+                <h4>Category</h4>         
+                <Card.Text className='drinks-other'>{strCategory}</Card.Text>
+            </Col>          
+          </Row>
+        </Card.Body>
       </Card>
     </section>
   )

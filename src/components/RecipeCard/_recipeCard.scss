@@ -1,13 +1,7 @@
 .recipe-card {   
-    // position: relative; 
     border: 0;
     
     background: transparent;    
-
-    // &-header {
-    //     background: transparent;
-    //     border: 0;
-    // }
 
     &-details {
         display: flex;
@@ -15,12 +9,7 @@
         justify-content: space-between;
         
     }
-    
-    &-img {
-        // border-radius: 20px;
-        // width: 500px;
-    }
-
+      
     &-print {
         margin-left: 18px;
         margin-right: 18px;
@@ -40,23 +29,10 @@
     
     &-footer {
         display: flex;
-        align-items: baseline;
-        // position: absolute;
+        align-items: baseline;        
         background: transparent;
-        border: 0;
-      
-
-        // bottom: -10px;
-        // left: 20px;
+        border: 0;      
     }
 
-    &-btn {
-        margin-right: 10px;
-        width: 120px;
-        background:  #668ac4;      
-        border: 0; 
-    }
-    &-btn:hover {
-        background:  #516d9b;      
-    }
+   
 }

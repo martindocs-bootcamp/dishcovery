@@ -3,6 +3,7 @@ import { useEffect, useRef } from 'react';
 import { useReactToPrint } from 'react-to-print';
 import { Loading, RecipeCard, IngridientsCard } from '../../components';
 import Card from 'react-bootstrap/Card';
+import { Link } from 'react-router-dom';
 
 const Recipe = () => {
   const { isLoading, edamamAPI, fetchEdamamRecipes } = useGlobalContext();  
@@ -52,15 +53,16 @@ const Recipe = () => {
           servings={servings}
           calories={calories}
           totalTime={totalTime}
+          title={label}
           totalNutrients={totalNutrients}
         />
        
         <IngridientsCard ingredients={ingredients} />              
 
       <h3 className='recipe-prep'>Preparation</h3>
-      <div className='d-flex align-items-baseline'>
+      <div className='d-flex align-items-baseline mb-3'>
         <Card.Link             
-            className="btn btn-primary recipe-card-btn" 
+            className="btn btn-primary recipe-btn ms-3" 
             href={url}
             target='_blank'
             rel='noopener noreferrer'
@@ -68,6 +70,16 @@ const Recipe = () => {
         <p>on {source}</p>        
       </div>
 
+      <h3 className='recipe-drink'>Drinks ideas</h3> 
+      <div className='d-flex align-items-baseline'>
+        <Card.Link
+          className="btn btn-primary recipe-btn ms-3"
+          as={Link}
+          to="/drinks"
+          >
+          Get Recipe
+        </Card.Link>
+      </div>
     </section>
   )
 }

@@ -1,6 +1,4 @@
 import PropTypes from 'prop-types';
-import Button from 'react-bootstrap/Button';
-import { FaPrint } from "react-icons/fa";
 
 import { 
   EmailShareButton,
@@ -16,9 +14,9 @@ import {
   PinterestIcon,
 } from 'react-share';
 
-const ShareButtons = ({url, handlePrint}) => {
+const ShareButtons = ({url}) => {
   return (   
-    <>
+    <section className='no-print'>
       <EmailShareButton url={url} className="share-btn">
         <EmailIcon size={36} round />
         <p>Email</p>
@@ -34,24 +32,13 @@ const ShareButtons = ({url, handlePrint}) => {
       <PinterestShareButton url={url} className="share-btn">
         <PinterestIcon size={36} round />
         <p>Pin it</p>
-      </PinterestShareButton>   
-
-      <div className='recipe-card-print'>
-        <Button 
-          className='recipe-card-print-btn'
-          onClick={handlePrint}
-        >
-          <FaPrint />
-        </Button>         
-        <p>Print it</p>
-      </div>   
-    </>   
+      </PinterestShareButton>        
+    </section>   
   )
 }
 
 ShareButtons.propTypes = {
   url: PropTypes.string.isRequired,
-  handlePrint: PropTypes.func.isRequired,
 }
 
 export default ShareButtons;

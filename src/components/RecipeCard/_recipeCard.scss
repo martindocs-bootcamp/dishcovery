@@ -11,8 +11,9 @@
     }
       
     &-print {
-        margin-left: 18px;
-        margin-right: 18px;
+        position: absolute;
+        top: 0;
+        left: 0;
     }
 
     &-print-btn {
@@ -32,7 +33,6 @@
         align-items: baseline;        
         background: transparent;
         border: 0;      
-    }
-
+    }   
    
 }

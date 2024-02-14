@@ -4,7 +4,8 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import ListGroup from 'react-bootstrap/ListGroup';
 import { Nutrition, ShareButtons } from '../../components';
-
+import Button from 'react-bootstrap/Button';
+import { FaPrint } from "react-icons/fa";
 
 import img from '../../assets/img-food.jpg'; //temp
 
@@ -31,12 +32,21 @@ const RecipeImgCard = ({
 return (
     <Card className='recipe-card'>      
       <Card.Body className='pb-0'>
-        <Row>
-          <Col md="6">
+        <Row className='print-row'>
+          <Col md="6" className='print-col'>
+            <div className='recipe-card-print no-print'>
+              <Button 
+                className='recipe-card-print-btn'
+                onClick={handlePrint}
+              >
+                <FaPrint />
+              </Button>         
+            </div>  
+
             <Card.Img variant="top" src={img} className='recipe-card-img' alt={`Image of ${title}`} />
           </Col>
-          <Col md="6" className='recipe-card-details'>
-            <Row>
+          <Col md="6" className='recipe-card-details mb-3 print-col'>
+            <Row className='mb-4'>
               <Col>
                 Total Time: <br />{totalTime ? `${totalTime} mins` : 'N/A'} 
               </Col>

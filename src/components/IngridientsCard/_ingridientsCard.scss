@@ -1,25 +1,37 @@
 .ingridients-card {
-    background: transparent;
+    // width: 500px;
     border: 0;
+    // padding-top: 40px;
 
-    &-header {
-        background: transparent;
-        border: 0;
-        text-align: center;
+    &-header {      
+       background: transparent;
+    //    display: flex;       
+    //    padding-bottom: 10px;
+    }
+
+    &-title {
+        padding: 0 10px;
+        margin-left: 0 !important; 
+        font-size: 18px;
+        text-decoration: none;
+        border-bottom: 1px solid transparent;
+        color: #000;   
+        font-weight: 600;
+                
+    }
+       
+    &-title:hover {        
+        color: #5E869C;
     }
 
     &-btn {
         margin-right: 10px;
         width: 150px;
-        background:  #668ac4;      
+        background:  #5E869C;      
         border: 0; 
     }
     &-btn:hover {
-        background:  #516d9b;      
-    }
-
-    &-title {
-        padding-left: 15px;
+        background:  #4f7183;      
     }
 
     &-img {

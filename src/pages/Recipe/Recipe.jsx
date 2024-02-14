@@ -15,6 +15,7 @@ import { useEffect, useRef } from 'react';
 import { useReactToPrint } from 'react-to-print';
 // import { FaPrint } from "react-icons/fa";
 import {RecipeCard, IngridientsCard} from '../../components';
+import Card from 'react-bootstrap/Card';
 
 const Recipe = () => {
   const { isLoading, edamamAPI, fetchEdamamRecipes } = useGlobalContext();  
@@ -41,19 +42,38 @@ const Recipe = () => {
     )
   }
  
-  const{label, image, ingredients, url, source} = edamamAPI[0].recipe; 
+  const{
+    label, 
+    image, 
+    ingredients, 
+    url, 
+    source, 
+    yield:servings,
+    calories,
+    totalTime,    
+    totalNutrients,
+  
+  } = edamamAPI[0].recipe; 
+
+ 
 
   return edamamAPI.length !== 0 && (
     <section className="recipe" ref={componentRef}>
-      <Row>
-        <Col>
+      <h2 className='recipe-title'>{label}</h2>
+      {/* <Row className='d-flex justify-content-center mt-4'> */}
+        {/* <Col md="6"> */}
           <RecipeCard 
             handlePrint={handlePrint}
-            title={label}
+            // title={label}
             image={image}
             url={url}
             source={source}
+            servings={servings}
+            calories={calories}
+            totalTime={totalTime}
+            totalNutrients={totalNutrients}
           />
+
           {/* <Title title={label}/>
           <ImageFood image={image} />
           <ShareButtons url={url} />
@@ -69,8 +89,8 @@ const Recipe = () => {
               type="button"
               className='btn-source'
           >Source</Button>             */}
-        </Col>
-        <Col>      
+        {/* </Col> */}
+        {/* <Col md="6">       */}
           <IngridientsCard 
             ingredients={ingredients} 
             
@@ -97,8 +117,21 @@ const Recipe = () => {
           {/* <section className='recipe-content'>
             <MainContent ingrediens={ingredientLines}/>
           </section> */}
-        </Col>        
-      </Row>
+        {/* </Col>         */}
+      {/* </Row> */}
+
+      <h3 className='recipe-prep'>Preparation</h3>
+      <div className='d-flex align-items-baseline'>
+        <Card.Link             
+            className="btn btn-primary recipe-card-btn" 
+            href={url}
+            target='_blank'
+            rel='noopener noreferrer'
+            >Instructions</Card.Link>
+        <p>on {source}</p>        
+      </div>
+
+        
     </section>
   )
 }

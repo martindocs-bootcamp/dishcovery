@@ -1,21 +1,52 @@
-.recipe-card {    
+.recipe-card {   
+    // position: relative; 
     border: 0;
-    background: transparent;
+    
+    background: transparent;    
 
-    &-header {
-        background: transparent;
-        border: 0;
+    // &-header {
+    //     background: transparent;
+    //     border: 0;
+    // }
+
+    &-details {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        
     }
     
     &-img {
-        border-radius: 20px;
+        // border-radius: 20px;
+        // width: 500px;
+    }
+
+    &-print {
+        margin: 0 20px;
+    }
+
+    &-print-btn {
+        background: rgb(102, 156, 91);
+        color: white;
+        border: 0;
+        border-radius: 50%;
+        padding: 5px 10px 8px;
+    }
+
+    &-print:hover {
+        background: rgb(119, 175, 107);
     }
     
     &-footer {
         display: flex;
         align-items: baseline;
+        // position: absolute;
         background: transparent;
         border: 0;
+      
+
+        // bottom: -10px;
+        // left: 20px;
     }
 
     &-btn {

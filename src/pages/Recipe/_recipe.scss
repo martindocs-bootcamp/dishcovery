@@ -1,5 +1,9 @@
 .recipe {
 
+  &-title {
+    border-bottom: 1px solid #dee2e6;
+  }
+
   &-print {
     background: rgb(230, 169, 248);
     padding: 2px 8px 8px;
@@ -13,6 +17,11 @@
 
   &-print:hover {
     opacity: .85;
+  }
+
+  &-prep {
+    border-bottom: 1px solid #d2d2d2;
+    padding: 8px 16px;
   }
 
 }

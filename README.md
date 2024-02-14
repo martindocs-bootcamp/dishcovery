@@ -151,7 +151,9 @@ https://dishcoveryapp.netlify.app/
 
 - Enter your desired dish or cuisine in the search bar.
 - Hit enter on your keyboard to retrieve recipe suggestions.
-- Explore the displayed recipe instructions, ingredients, drink suggestion and nutritional information 
+- Explore the displayed recipe instructions, ingredients, drink suggestion and nutritional information.
+- Print the chosen recipe using the print icon.
+- If thirsty, use the app to find a matching drink recipe. 
 - Save your favorite recipes using the "♥" button.
 
 

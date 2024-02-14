@@ -1,4 +1,6 @@
 import PropTypes from 'prop-types';
+import Button from 'react-bootstrap/Button';
+import { FaPrint } from "react-icons/fa";
 
 import { 
   FacebookShareButton, 
@@ -11,7 +13,7 @@ import {
   TwitterIcon,
 } from 'react-share';
 
-const ShareButtons = ({url}) => {
+const ShareButtons = ({url, handlePrint}) => {
   return (   
     <>
       <FacebookShareButton url={url} className="share-btn">
@@ -26,12 +28,22 @@ const ShareButtons = ({url}) => {
         <TwitterIcon size={36} round />
         <p>Twitter</p>
       </TwitterShareButton>
+      <div className='recipe-card-print'>
+        <Button 
+          className='recipe-card-print-btn'
+          onClick={handlePrint}
+        >
+          <FaPrint />
+        </Button>         
+        <p>Print</p>
+      </div>
     </>   
   )
 }
 
 ShareButtons.propTypes = {
-  url: PropTypes.string
+  url: PropTypes.string.isRequired,
+  handlePrint: PropTypes.func.isRequired,
 }
 
 export default ShareButtons;

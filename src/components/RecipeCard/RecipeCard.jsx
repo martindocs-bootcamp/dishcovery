@@ -1,13 +1,10 @@
 import { PropTypes } from 'prop-types';
-import ShareButtons from '../ShareButtons/ShareButtons';
-import { FaPrint } from "react-icons/fa";
 import Card from 'react-bootstrap/Card';
-import Button from 'react-bootstrap/Button';
 import { Link } from 'react-router-dom';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import ListGroup from 'react-bootstrap/ListGroup';
-import { Nutrition } from '../../components';
+import { Nutrition, ShareButtons } from '../../components';
 
 
 import img from '../../assets/img-food.jpg'; //temp
@@ -27,14 +24,12 @@ const RecipeImgCard = ({
     FASAT:fSaturated, 
     CHOCDF:carbs, 
     SUGAR:sugar, 
-    PROCNT:protein, 
-    NA:sodium
+    PROCNT:protein,   
   } = totalNutrients;
 
-console.log(fat)
+
 return (
-    <Card className='recipe-card'>
-        {/* <Card.Header className='recipe-card-header'><h2>{title}</h2></Card.Header> */}
+    <Card className='recipe-card'>      
       <Card.Body className='pb-0'>
         <Row>
           <Col md="6">
@@ -43,7 +38,7 @@ return (
           <Col md="6" className='recipe-card-details'>
             <Row>
               <Col>
-                Total Time: <br />{totalTime} mins
+                Total Time: <br />{totalTime ? `${totalTime} mins` : 'N/A'} 
               </Col>
               <Col>
                 Servings: <br />{servings}
@@ -95,16 +90,7 @@ return (
 
       </Card.Body>      
       <Card.Footer className='recipe-card-footer'>
-        <ShareButtons url={url} />
-        <div className='recipe-card-print'>
-          <Button 
-              className='recipe-card-print-btn'
-              onClick={handlePrint}
-              >
-            <FaPrint />
-          </Button>         
-          <p>Print</p>
-        </div>
+        <ShareButtons url={url} handlePrint={handlePrint} />       
               
         <div className='d-flex align-items-baseline'>
           <p className='me-2'>Fancy a drink?</p> 
@@ -124,11 +110,14 @@ return (
 }
 
 RecipeImgCard.propTypes = {
-    handlePrint: PropTypes.func.isRequired,
-    title: PropTypes.string.isRequired, 
+    handlePrint: PropTypes.func.isRequired, 
     image: PropTypes.string.isRequired, 
     url: PropTypes.string.isRequired,
     source: PropTypes.string.isRequired,
+    calories: PropTypes.number.isRequired,
+    totalTime: PropTypes.number.isRequired,
+    servings: PropTypes.number.isRequired,
+    totalNutrients: PropTypes.object.isRequired,
 }
 
 export default RecipeImgCard;

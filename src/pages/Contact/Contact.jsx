@@ -3,6 +3,7 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import contactImg from '../../assets/contact.png';
 import { useGlobalContext } from '../../hooks/useGlobalContext'; 
+import MessageModal from '../../components/MessageModal/MessageModal';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -11,9 +12,11 @@ const Contact = () => {
     senderMessage: '',
   });
 
-  const{ sendEmail } = useGlobalContext();
+  const{ sendEmail, showSuccessMessage, showErrorMessage, } = useGlobalContext();
 
   const [imageLoaded, setImageLoaded] = useState(false);
+
+  
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -37,19 +40,20 @@ const Contact = () => {
     // Basic email validation using regular expression
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(formData.senderEmail)) {
-      console.log('Please enter a valid email address.');
+      showErrorMessage('Please enter a valid email address.');      
       return;
     }
 
-    sendEmail(formData);
+    // sendEmail(formData);
 
     handleClearForm();
 
-    console.log('Form submitted successfully!');
+    showSuccessMessage('Form submitted successfully!');
   };
 
   return (
-    <section className='contact'>      
+    <section className='contact'>    
+      <MessageModal />
         <img 
           src={contactImg} 
           className='contact-img' 
@@ -115,6 +119,7 @@ const Contact = () => {
                   Clear
                 </Button>
               </div>
+              
             </Form>
         }      
       

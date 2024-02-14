@@ -7,6 +7,7 @@ import Footer from "./Footer/Footer";
 import RecipeCard from './RecipeCard/RecipeCard';
 import IngridientsCard from './IngridientsCard/IngridientsCard';
 import Nutrition from "./Nutrition/Nutrition";
+import MessageModal from "./MessageModal/MessageModal";
 
 export { 
   Navigation, 
@@ -18,4 +19,5 @@ export {
   RecipeCard,
   IngridientsCard,
   Nutrition,
+  MessageModal,
 };

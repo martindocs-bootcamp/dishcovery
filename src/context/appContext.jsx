@@ -3,6 +3,8 @@ import reducer from './reducer';
 import axios from 'axios';
 import PropTypes from 'prop-types';
 import { initialState } from "./initState";
+import { toast } from 'react-toastify';
+
 import {
     HANDLE_INPUT,
     HANDLE_RESET_STATE,
@@ -26,6 +28,30 @@ export const AppContext = createContext();
 export const AppProvider = ({children}) => {
     const[state, dispatch] = useReducer(reducer, initialState);
     
+    const showSuccessMessage = (text) => {
+        toast.success(text, {
+          position: "top-center",
+          autoClose: 1000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: false,
+          theme: "light",
+        });
+      };
+    
+      const showErrorMessage = (text) => {
+        toast.error(text, {
+          position: "top-center",
+          autoClose: 1000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: false,
+          theme: "light",
+        });
+      };
+
     // Handle input search 
     const handleInput = ({name, value}) => {
         dispatch({type: HANDLE_INPUT, payload: {value, name} })
@@ -98,6 +124,8 @@ export const AppProvider = ({children}) => {
         <AppContext.Provider 
             value={{
                 ...state,
+                showSuccessMessage,
+                showErrorMessage,
                 handleInput,
                 handleResetState,
                 fetchEdamamRecipes,

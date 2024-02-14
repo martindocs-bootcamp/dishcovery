@@ -1,5 +1,4 @@
 .recipe {
-
   &-print {
     background: rgb(230, 169, 248);
     padding: 2px 8px 8px;
@@ -12,7 +11,40 @@
   }
 
   &-print:hover {
-    opacity: .85;
+    opacity: 0.85;
   }
+}
 
+.Toastify__toast {
+  background-color: #e8e5da;
+}
+
+.Toastify__toast-body {
+  color: #5e869c;
+}
+
+.Toastify__progress-bar {
+  background-color: #5e869c;
+}
+
+.Toastify__close-button--success {
+  display: none;
+}
+
+.favourite-btn {
+  background-color: #e8e5da;
+  border-radius: 30px;
+  color: #5e869c;
+  border: none;
+  transition: all 150ms ease-in-out;
+  font-size: 18px;
+}
+
+.favourite-btn:hover {
+  background-color: #e79331;
+  color: #e8e5da;
+}
+
+.favourite-btn:active {
+  opacity: 0.8;
 }

@@ -85,7 +85,9 @@ const Recipe = () => {
             </button>
             <Title title={label} />
             {/* Button to add meal to favorites */}
-            <button onClick={handleAddToFavorites}>Add to Favorites</button>
+            <button className="favourite-btn" onClick={handleAddToFavorites}>
+              &hearts;
+            </button>
           </div>
           <section className="home-content">
             <MainContent ingredients={ingredientLines} />

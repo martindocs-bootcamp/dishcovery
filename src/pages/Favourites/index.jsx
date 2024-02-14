@@ -51,12 +51,17 @@ const Favorites = () => {
 
   return (
     <div className="favorites">
-      <h2>Your Favorite Recipes</h2>
+      <h2 className="fav-title"> Your Favorite Recipes </h2>
       {/* Map through favorite meals and render a button for each */}
       {favoriteMeals.map((meal) => (
         <div key={meal.label}>
-          <button onClick={() => handleShowModal(meal)}>{meal.label}</button>
-          <button onClick={() => removeFromFavorites(meal.label)}>
+          <button className="food-btn" onClick={() => handleShowModal(meal)}>
+            {meal.label}
+          </button>
+          <button
+            className="remove-btn"
+            onClick={() => removeFromFavorites(meal.label)}
+          >
             Remove from Favorites
           </button>
         </div>

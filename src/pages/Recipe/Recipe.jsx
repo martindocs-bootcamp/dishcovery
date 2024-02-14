@@ -12,6 +12,8 @@ import { useGlobalContext } from "../../hooks/useGlobalContext";
 import { Link } from "react-router-dom";
 import { useReactToPrint } from "react-to-print";
 import { FaPrint } from "react-icons/fa";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Recipe = () => {
   const { isLoading, edamamAPI, fetchEdamamRecipes } = useGlobalContext();
@@ -48,7 +50,17 @@ const Recipe = () => {
       url: url,
     });
     localStorage.setItem("favorites", JSON.stringify(favorites));
-    alert("Meal added to favorites!");
+    showToastSuccess("Meal added to favorites!");
+  };
+
+  // Function to display a success toast message - not working
+  const showToastSuccess = (message) => {
+    toast.success(message);
+  };
+
+  // Function to display an error toast message - not working
+  const showToastError = (message) => {
+    toast.error(message);
   };
 
   return (

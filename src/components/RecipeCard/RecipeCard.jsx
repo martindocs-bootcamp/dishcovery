@@ -1,6 +1,5 @@
 import { PropTypes } from 'prop-types';
 import Card from 'react-bootstrap/Card';
-import { Link } from 'react-router-dom';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import ListGroup from 'react-bootstrap/ListGroup';
@@ -12,6 +11,7 @@ import img from '../../assets/img-food.jpg'; //temp
 const RecipeImgCard = ({
   handlePrint,   
   image, 
+  title,
   url, 
   calories,
   totalTime,
@@ -33,7 +33,7 @@ return (
       <Card.Body className='pb-0'>
         <Row>
           <Col md="6">
-            <Card.Img variant="top" src={img} className='recipe-card-img'/>
+            <Card.Img variant="top" src={img} className='recipe-card-img' alt={`Image of ${title}`} />
           </Col>
           <Col md="6" className='recipe-card-details'>
             <Row>
@@ -90,20 +90,7 @@ return (
 
       </Card.Body>      
       <Card.Footer className='recipe-card-footer'>
-        <ShareButtons url={url} handlePrint={handlePrint} />       
-              
-        <div className='d-flex align-items-baseline'>
-          <p className='me-2'>Fancy a drink?</p> 
-
-          <Card.Link
-            className="btn btn-primary recipe-card-btn"
-            as={Link}
-            to="/drinks"
-            >
-            Get one
-          </Card.Link>
-        </div>
-        
+        <ShareButtons url={url} handlePrint={handlePrint} />      
       </Card.Footer>
     </Card>    
   )
@@ -112,6 +99,7 @@ return (
 RecipeImgCard.propTypes = {
     handlePrint: PropTypes.func.isRequired, 
     image: PropTypes.string.isRequired, 
+    title: PropTypes.string.isRequired, 
     url: PropTypes.string.isRequired,
     source: PropTypes.string.isRequired,
     calories: PropTypes.number.isRequired,

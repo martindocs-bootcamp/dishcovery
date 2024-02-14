@@ -3,31 +3,39 @@ import Button from 'react-bootstrap/Button';
 import { FaPrint } from "react-icons/fa";
 
 import { 
+  EmailShareButton,
+  EmailIcon,
+
   FacebookShareButton, 
   FacebookIcon,
 
-  LinkedinShareButton,
-  LinkedinIcon,
-
   TwitterShareButton,
   TwitterIcon,
+
+  PinterestShareButton,
+  PinterestIcon,
 } from 'react-share';
 
 const ShareButtons = ({url, handlePrint}) => {
   return (   
     <>
+      <EmailShareButton url={url} className="share-btn">
+        <EmailIcon size={36} round />
+        <p>Email</p>
+      </EmailShareButton>
       <FacebookShareButton url={url} className="share-btn">
         <FacebookIcon size={36} round />
-        <p>Facebook</p>
+        <p>Share</p>
       </FacebookShareButton>     
-      <LinkedinShareButton url={url} className="share-btn">
-        <LinkedinIcon size={36} round />
-        <p>Linkedin</p>
-      </LinkedinShareButton>
       <TwitterShareButton url={url} className="share-btn">
         <TwitterIcon size={36} round />
-        <p>Twitter</p>
-      </TwitterShareButton>
+        <p>Tweet</p>
+      </TwitterShareButton>      
+      <PinterestShareButton url={url} className="share-btn">
+        <PinterestIcon size={36} round />
+        <p>Pin it</p>
+      </PinterestShareButton>   
+
       <div className='recipe-card-print'>
         <Button 
           className='recipe-card-print-btn'
@@ -35,8 +43,8 @@ const ShareButtons = ({url, handlePrint}) => {
         >
           <FaPrint />
         </Button>         
-        <p>Print</p>
-      </div>
+        <p>Print it</p>
+      </div>   
     </>   
   )
 }

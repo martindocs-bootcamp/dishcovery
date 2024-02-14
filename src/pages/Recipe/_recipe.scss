@@ -3,25 +3,22 @@
   &-title {
     border-bottom: 1px solid #dee2e6;
   }
-
-  &-print {
-    background: rgb(230, 169, 248);
-    padding: 2px 8px 8px;
-    border-radius: 50%;
-    border: 0;
-
-    svg {
-      color: #000000;
-    }
-  }
-
-  &-print:hover {
-    opacity: .85;
-  }
-
-  &-prep {
+  
+  &-prep, &-drink {
     border-bottom: 1px solid #d2d2d2;
     padding: 8px 16px;
+    margin-bottom: 20px;
+  }
+
+  &-btn {
+    margin-right: 10px;
+    width: 120px;
+    background:  #668ac4;      
+    border: 0; 
+  }
+
+  &-btn:hover {
+      background:  #516d9b;      
   }
 
 }

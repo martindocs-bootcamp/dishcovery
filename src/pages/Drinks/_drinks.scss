@@ -1,4 +1,36 @@
 .drinks {
+  border: 0;
 
- 
+  &-title {
+    border-bottom: 1px solid #dee2e6;
+  }
+
+  &-img {  
+    max-width: 350px;
+    width: 100%;;
+  }
+
+  &-list-item {
+    border: 0;
+    padding-left: 10px;
+    list-style-type: disc;
+  }
+
+  &-list-item:last-child {
+    margin-bottom: 10px;
+  }
+
+  &-other {
+    margin-bottom: 20px;
+  }
+
+  &-btn {
+    margin-right: 10px;    
+    background:  #668ac4;      
+    border: 0; 
+  }
+
+  &-btn:hover {
+      background:  #516d9b;      
+  }
 }

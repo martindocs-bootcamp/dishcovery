@@ -33,4 +33,18 @@
   &-btn:hover {
       background:  #516d9b;      
   }
+
+  
+  @media screen and (max-width: 425px) {
+    
+    &-btn-content {
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+
+    &-headings {
+      border-bottom: 1px solid #dee2e6;
+    }
+
+  }
 }

@@ -53,7 +53,7 @@ const Drinks = () => {
             <Col md="6">
               <Card.Img variant="top" className='drinks-img' src={strDrinkThumb} alt={`Image of ${strDrink} drink`} />
 
-              <div className='d-flex align-items-baseline'>
+              <div className='d-flex align-items-baseline drinks-btn-content'>
                 <Card.Link
                   className="btn btn-primary drinks-btn mt-3"
                   as={Link}
@@ -65,7 +65,7 @@ const Drinks = () => {
             </Col>
 
             <Col md="6">
-                <h4>{ingredientNames.length} Ingredients</h4> 
+                <h4 className='drinks-headings'>{ingredientNames.length} Ingredients</h4> 
                 <ListGroup variant="list-group-flush">
                 {
                   ingredientNames.map((item, index) => {
@@ -84,11 +84,11 @@ const Drinks = () => {
                 }               
                 </ListGroup>  
 
-                <h4>Instructions</h4>
+                <h4 className='drinks-headings'>Instructions</h4>
                 <Card.Text>{strInstructions}</Card.Text>   
                 <Card.Text className='drinks-other'>Serve in {strGlass}</Card.Text>   
 
-                <h4>Category</h4>         
+                <h4 className='drinks-headings'>Category</h4>         
                 <Card.Text className='drinks-other'>{strCategory}</Card.Text>
             </Col>          
           </Row>

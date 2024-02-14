@@ -4,7 +4,10 @@ export const handler = async (e, context) => {
   const { name, email, message } = JSON.parse(e.body);
 
   const transporter = nodemailer.createTransport({
-    service: 'gmail',
+    service: 'smtp.office365.com',
+    port: 587,
+    secure: false,
+    // service: 'gmail',
     auth: {
       user: process.env.EMAIL_USER,
       pass: process.env.EMAIL_PASS,
@@ -15,7 +18,7 @@ export const handler = async (e, context) => {
 
   const mailOptions = {
     from: process.env.EMAIL_USER,
-    to: process.env.EMAIL_USER,
+    to: 'martin.tatarski@outlook.com',
     // to: import.meta.env.EMAIL_USER,
     subject: 'New Email',
     text: `Name: ${name}\nEmail: ${email}\nMessage: ${message}`,

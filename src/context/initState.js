@@ -4,5 +4,5 @@ export const initialState = {
     drinksAPI: [],    
     search: '', 
     sendingEmail: false,
-    errorMessage: null,  
+    errorMessage: null,     
 }

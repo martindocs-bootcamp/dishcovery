@@ -88,13 +88,11 @@ Below is our approach to this task:
 <ol>
 <li> We built the initial foundation based on our wireframe 
 <li> We split the roles up based on components within our React build
-<li>
-<li>
-<li>
-<li>
-<li>
-<li>
-<li>
+<li> We each took to our separate sections, communicating upon completion and issues.
+<li> Those more able perfected others pages.
+<li> Everyone else completed other tasks necessary for deployment.
+<li> We divided presentation slides.
+<li> We deployed working application
 </ol>
 
 
@@ -150,10 +148,14 @@ https://dishcoveryapp.netlify.app/
 ## Usage
 
 - Enter your desired dish or cuisine in the search bar.
+- ![image]( https://github.com/martindocs-bootcamp/dishcovery/blob/25963dc962f0af8427358b4b17303489c2b3aa0e/src/assets/Picture1.png)
 - Hit enter on your keyboard to retrieve recipe suggestions.
+- ![image]( https://github.com/martindocs-bootcamp/dishcovery/blob/25963dc962f0af8427358b4b17303489c2b3aa0e/src/assets/Picture2.png)
 - Explore the displayed recipe instructions, ingredients, drink suggestion and nutritional information.
 - Print the chosen recipe using the print icon.
-- If thirsty, use the app to find a matching drink recipe. 
+- ![image]( https://github.com/martindocs-bootcamp/dishcovery/blob/25963dc962f0af8427358b4b17303489c2b3aa0e/src/assets/Picture3.png)
+- If thirsty, use the app to find a matching drink recipe.
+- ![image]( https://github.com/martindocs-bootcamp/dishcovery/blob/25963dc962f0af8427358b4b17303489c2b3aa0e/src/assets/Picture4.png) 
 - Save your favorite recipes using the "♥" button.
 
 

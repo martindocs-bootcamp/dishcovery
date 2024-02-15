@@ -28,6 +28,42 @@ export const AppContext = createContext();
 export const AppProvider = ({children}) => {
     const[state, dispatch] = useReducer(reducer, initialState);
     
+    const getFromLocalStorage = () => {
+        const storage = JSON.parse(localStorage.getItem('favorites'));
+        if(!storage){
+            localStorage.setItem('favorites', JSON.stringify([]));
+        }
+        return storage === null ? [] : storage;        
+    }
+
+    const removeFromLocalStorage = (label) => {
+        const{ favorites } = state;
+        const updatedFavorites = favorites.filter(
+            (recipe) => recipe.label !== label
+          );
+              
+        localStorage.setItem("favorites", JSON.stringify(updatedFavorites));
+    }
+
+    const addToLocalStorage = ({title, image, id}) => {
+        const favorites = getFromLocalStorage();
+
+        const isFavorite = favorites.some(
+          (favorite) => favorite.title === title
+        );
+
+        if (isFavorite) {
+            showErrorMessage("Recipe is already in favorites!");
+        } else {  
+            const updatedFavorites = [...favorites, {title, image, id}];
+    
+            localStorage.setItem("favorites", JSON.stringify(updatedFavorites));
+
+            showSuccessMessage("Recipe added to favorites!");
+        }
+    }
+
+
     const showSuccessMessage = (text) => {
         toast.success(text, {
           position: "top-center",
@@ -60,29 +96,45 @@ export const AppProvider = ({children}) => {
     const handleResetState = () => {
         dispatch({type: HANDLE_RESET_STATE});
     }
-
+    
     // Fetch data from Edeme recepies
-    const fetchEdamamRecipes = async () => {      
-
+    const fetchEdamamRecipes = async ( str = '') => {      
         const {search} = state;
+        
+        const newSearch = str === '' ? search : str;
+        
         const edamamApiID = import.meta.env.VITE_EDAMAM_APP_ID; // locally
         const edamamApiKey = import.meta.env.VITE_EDAMAM_APP_KEY; // locally
         // const edamamApiID = process.env.EDAMAM_APP_ID; // Netlify
         // const edamamApiKey = process.env.EDAMAM_APP_KEY; // Netlify
-
-        if (state.edamamAPI.length === 0) {
-            dispatch({type: GET_EDAMAM_RECIPES_BEGIN})
+        
+        // if (state.edamamAPI.length === 0) {
             try {
-                // const {data} = await axios.get(`https://api.edamam.com/api/recipes/v2?type=public&q=${search}&app_id=${edamamApiID}&app_key=${edamamApiKey}`);
-
-                // const {hits:results} = data; // Netlify
+                dispatch({type: GET_EDAMAM_RECIPES_BEGIN})
+                
+                let url = '';
+                
+                if(str === '') {
+                    // Fetch by search query
+                    // url = `https://api.edamam.com/api/recipes/v2?type=public&q=${newSearch}&app_id=${edamamApiID}&app_key=${edamamApiKey}`;
+                } else {
+                    // Fetch by recipe ID
+                    // const id = getFromLocalStorage().filter((item)=> item.title == newSearch)[0].id;
+                   
+                    // url = `https://api.edamam.com/api/recipes/v2/${id}?type=public&app_id=${edamamApiID}&app_key=${edamamApiKey}`;
+                    console.log(url)
+                }
+                           
+                // const {data} = await axios.get(url);
+                              
+                // const results = data.hits ? data.hits : [data]; // Netlify
                 const {hits:results} = edamamData; // locally
-            
+        
                 dispatch({type: GET_EDAMAM_RECIPES_SUCCESS, payload: {results}})
             }catch(err) {
                 console.log(err);
             }    
-        }
+        // }
     }
 
     const fetchDrinksRecipes = async() => {
@@ -126,6 +178,9 @@ export const AppProvider = ({children}) => {
                 ...state,
                 showSuccessMessage,
                 showErrorMessage,
+                getFromLocalStorage,
+                removeFromLocalStorage,
+                addToLocalStorage,
                 handleInput,
                 handleResetState,
                 fetchEdamamRecipes,
@@ -139,8 +194,8 @@ export const AppProvider = ({children}) => {
 }
 
 AppProvider.propTypes = {
-    children: PropTypes.object,
-    senderName: PropTypes.string,
-    senderEmail: PropTypes.string,
-    senderMessage: PropTypes.string,
+    children: PropTypes.object.isRequired,
+    senderName: PropTypes.string.isRequired,
+    senderEmail: PropTypes.string.isRequired,
+    senderMessage: PropTypes.string.isRequired,
 }

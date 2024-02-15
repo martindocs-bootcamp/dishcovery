@@ -5,11 +5,17 @@ import Button from 'react-bootstrap/Button';
 import { useGlobalContext } from '../../hooks/useGlobalContext';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
+import MessageModal from '../../components/MessageModal/MessageModal';
 
 // Favorites component
 const Favorites = () => {  
   // Properties and functions from global context
-  const { removeFromLocalStorage, getFromLocalStorage, fetchEdamamRecipes } = useGlobalContext();
+  const { 
+    showSuccessMessage, 
+    removeFromLocalStorage, 
+    getFromLocalStorage, 
+    fetchEdamamRecipes 
+  } = useGlobalContext();
   
   // useNavigate hook
   const navigate = useNavigate();
@@ -21,6 +27,7 @@ const Favorites = () => {
   const handleRemoveClick = (title) => {
      removeFromLocalStorage(title);
      setFavorites(getFromLocalStorage());
+     showSuccessMessage('Favorites removed successfully!');
    };
 
   // Handle click on a favorite recipe card
@@ -34,7 +41,7 @@ const Favorites = () => {
 
   return (
     <section className="favorites">
-
+      <MessageModal />
       {/* Heading for the favorites section */}
       <h2 className="favorites-title text-center">Your Favorite Recipes </h2> 
 

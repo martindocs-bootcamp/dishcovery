@@ -16,8 +16,6 @@ const Contact = () => {
 
   const [imageLoaded, setImageLoaded] = useState(false);
 
-  
-
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({
@@ -40,10 +38,24 @@ const Contact = () => {
     // Basic email validation using regular expression
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(formData.senderEmail)) {
-      showErrorMessage('Please enter a valid email address.');      
+      showErrorMessage('Please enter a valid email address.');
       return;
     }
 
+    //setup variables to populate the email
+    let subject = `Email from ${formData.senderName}`;
+    let senderEmail = formData.senderEmail;
+    let senderMessage = `Name: ${formData.senderName}
+      Email Address: ${senderEmail}
+      Message: ${formData.senderMessage}`;
+
+    //populating the email & redirect the page to open the users default browser
+    window.location = `mailto:contactme@email.com?subject=${subject}&body=${senderMessage}`;
+
+    // sendEmail(formData); //fix original from Marcin
+
+    handleClearForm
+    
     // sendEmail(formData);
 
     handleClearForm();

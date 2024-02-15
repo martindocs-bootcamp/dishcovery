@@ -1,15 +1,17 @@
 # DishCovery 🥙
- Navigate Flavour Frontiers!  A fun app to get recipes, drink recommendations and nutritional information
 
+Navigate Flavour Frontiers! A fun app to get recipes, drink recommendations and nutritional information
 
 ## Expectations
+
 ---
+
 With your group, you’ll again conceive and execute a design that solves a real-world problem. In creating your first collaborative front-end, single-page application, you’ll create a React front end to build a user-focused platform. You’ll continue to build on the agile development methodologies you’ve used throughout this course. These include storing your project code in GitHub, managing your work with a project management tool, and implementing feature and bug fixes using the Git branch workflow and pull requests.
 
-
-
 ## Learning Objectives 📚
-----
+
+---
+
 <li>
 Use React
 <li>
@@ -29,11 +31,12 @@ Prepare a professional presentation and repository README for your project
 <br>
 <br>
 
-
-
 ## Tools 🛠️
-----
+
+---
+
 The following tools are to be used in this project:
+
 <ol>
 <li> Node.js
 <li> React
@@ -48,25 +51,19 @@ The following tools are to be used in this project:
 <li> APIs: TheCocktail Database, Edamam Database, API Ninjas Nutrition
 </ol>
 
+## Project Description
 
+The DishCovery Project is a fun food web application designed to help users explore new recipes and cooking ideas, find complimentary drinks for their meal, obtain nutritional information and save their favourite searches.
 
-
-## Project Description 
-
-The DishCovery Project is a fun food web application designed to help users explore new recipes and cooking ideas, find complimentary drinks for their meal, obtain nutritional information and save their favourite searches. 
-
-The main motivation behind DishCovery is to push the initial concept (Dish Discovery)  to the next level whilst inspiring culinary creativity that makes the process of finding new and exciting recipes more accessible.
+The main motivation behind DishCovery is to push the initial concept (Dish Discovery) to the next level whilst inspiring culinary creativity that makes the process of finding new and exciting recipes more accessible.
 
 The project was built to address the common challenge of deciding what to cook by providing a user-friendly interface for discovering, exploring, and saving recipes. It then helps in providing the user with drink choices as well as nutritional information based on their search.
 
-It aims to solve the problem of monotony in cooking and meal planning by offering a diverse range of recipes and drinks for users to try. 
-
+It aims to solve the problem of monotony in cooking and meal planning by offering a diverse range of recipes and drinks for users to try.
 
 During the development of this project, valuable insights into web development using libraries such as React, API integration via React components, and user experience/ user interface design were gained. Additionally, skills in handling data manipulation, project planning and collaborative work were honed.
 
-
 ## Table of Contents
-
 
 - [Methodology](#methodology)
 - [Conclusion](#conclusion)
@@ -77,14 +74,15 @@ During the development of this project, valuable insights into web development u
 - [Collaborators](#collaborators)
 - [License](#license)
 
-
-
 ## Methodology
-----
-This application is a multi page web-application. It will ask the user for an input of a recipe of their choice. Once they click search it will populate a recipe, drink and nutritional information based on the recipe found. The user will also have the ability to add their recipe's to favourites, just so they can have quick access to recipes when needed. 
+
+---
+
+This application is a multi page web-application. It will ask the user for an input of a recipe of their choice. Once they click search it will populate a recipe, drink and nutritional information based on the recipe found. The user will also have the ability to add their recipe's to favourites, just so they can have quick access to recipes when needed.
 <br>
 <br>
 Below is our approach to this task:
+
 <ol>
 <li> We built the initial foundation based on our wireframe 
 <li> We split the roles up based on components within our React build
@@ -95,12 +93,7 @@ Below is our approach to this task:
 <li> We deployed working application
 </ol>
 
-
 ## Conclusion
-
-
-
-
 
 ## Future Improvements
 
@@ -111,15 +104,15 @@ As a group we worked really well together. We understood that our skillset was v
 <li> 
 </ol>
 
-
-
 ## Website Preview
 
 ADD SCREENSHOTS OF THE NEW SITE HERE
 
-![alt text](assets/images/screenshot.png)
-
-
+![alt text](./src/assets/Picture1.png)
+![alt text](./src/assets/Picture2.png)
+![alt text](./src/assets/Picture3.png)
+![alt text](./src/assets/Picture4.png)
+![alt text](./src/assets/Picture5.png)
 
 ## Installation 💻
 
@@ -129,21 +122,13 @@ Clone the repository to your local machine.
 Navigate to the project directory.
 Npm run dev and access the provided link in the terminal
 
-
-
-
 Repo can be accessed here:
 
 https://github.com/martindocs-bootcamp/dishcovery
 
-
-
 Deployed site can be accessed here:
 
 https://dishcoveryapp.netlify.app/
-
-
-
 
 ## Usage
 
@@ -158,8 +143,6 @@ https://dishcoveryapp.netlify.app/
 - ![image]( https://github.com/martindocs-bootcamp/dishcovery/blob/25963dc962f0af8427358b4b17303489c2b3aa0e/src/assets/Picture4.png) 
 - Save your favorite recipes using the "♥" button.
 
-
-
 ## Collaborators
 
 <ol>
@@ -167,10 +150,13 @@ https://dishcoveryapp.netlify.app/
 <li> <a href='https://github.com/TuuPuu'> Elora Ainoa - Github Profile
 <li> <a href='https://github.com/rrana5106'> Rupesh Rana Magar - Github Profile
 <li> <a href='https://github.com/oliverstamper'> Oliver Stamper - Github Profile
-</ol>
+<li> <a href='https://github.com/ariestikto'> Pratikto Ariestyadi - Github Profile
+<li> <a href='https://github.com/stevecalla'> Steve Calla - Github Profile
 
+</ol>
 
 ## License
 
-This project is licensed under the MIT License.
+![GitHub License](https://img.shields.io/badge/license-MIT-blue)
 
+This project is licensed under the MIT License.

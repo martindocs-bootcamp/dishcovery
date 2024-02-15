@@ -21,7 +21,7 @@ const Navigation = () => {
             to="/"
             onClick={handleResetState}
           >Home</Nav.Link>
-          <Nav.Link as={Link} to="/favourites">Favourites</Nav.Link>
+          <Nav.Link as={Link} to="/favorites">Favourites</Nav.Link>
           <Nav.Link as={Link} to="/contact">Contact</Nav.Link>
         </Nav>
       </Container>

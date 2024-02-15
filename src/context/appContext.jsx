@@ -14,10 +14,6 @@ import {
 
     GET_DRINKS_RECIPES_BEGIN,
     GET_DRINKS_RECIPES_SUCCESS,
-
-    SEND_MESSAGE_BEGIN,
-    SEND_MESSAGE_SUCCESS,
-    SEND_MESSAGE_ERROR,
 } from './actions';
 
 // Create AppContext using createContext
@@ -113,7 +109,8 @@ export const AppProvider = ({children}) => {
 
         // Fetch Edamam API credentials
         const edamamApiID = process.env.EDAMAM_APP_ID; // Netlify
-        const edamamApiKey = process.env.EDAMAM_APP_KEY; // Netlify        
+        const edamamApiKey = process.env.EDAMAM_APP_KEY; // Netlify  
+           
       
         try {
             dispatch({type: GET_EDAMAM_RECIPES_BEGIN})

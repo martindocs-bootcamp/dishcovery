@@ -1,3 +1,4 @@
+// Import action types from the actions file
 import {
     HANDLE_INPUT,
     HANDLE_RESET_STATE,
@@ -13,30 +14,34 @@ import {
     SEND_MESSAGE_ERROR,
 } from './actions';
 
+// Define the initial state for the reducer
 const initialState = {
     isLoading: false,
     edamamAPI: [],
     drinksAPI: [],
-    favorites: [],
     search: '',
     sendingEmail: false,
     errorMessage: null,
 };
 
+// Define the reducer function
 const reducer = (state, action) => {
 
     switch(action.type){
+        // Handle input changes
         case HANDLE_INPUT:
             return {
                 ...state,
                 [action.payload.name]: action.payload.value
             }
 
+        // Reset the state to its initial values
         case HANDLE_RESET_STATE:
             return {
                 ...initialState
             }
 
+        // Fetching recipes from the Edamam API
         case GET_EDAMAM_RECIPES_BEGIN:
             return {
                 ...state,
@@ -50,6 +55,7 @@ const reducer = (state, action) => {
                 edamamAPI: action.payload.results
             }
 
+        // Fetching drink recipes
         case GET_DRINKS_RECIPES_BEGIN:
             return {
                 ...state,
@@ -63,6 +69,7 @@ const reducer = (state, action) => {
                 drinksAPI: action.payload.results
             }
         
+        // Sending an email
         case SEND_MESSAGE_BEGIN:            
             return {
                 ...state,                
@@ -83,6 +90,7 @@ const reducer = (state, action) => {
                 errorMessage: 'Error sending email', 
             };
 
+        // Default case for handling unknown actions
         default:
             return new Error(`No such action ${action.type}`);
     }

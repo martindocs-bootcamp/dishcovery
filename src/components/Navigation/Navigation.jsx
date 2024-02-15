@@ -25,7 +25,7 @@ const Navigation = () => {
             as={Link} 
             to="/"
             onClick={handleResetState}
-          >Home</Nav.Link>
+          >Recipes</Nav.Link>
 
           {/* Favorites link with a route to the favorites page */}
           <Nav.Link as={Link} to="/favorites">Favourites</Nav.Link>

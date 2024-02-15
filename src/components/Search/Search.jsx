@@ -38,7 +38,7 @@ const Search = () => {
       <Form.Control 
         type="text" 
         name="search"
-        placeholder="Explore the world..."
+        placeholder="Search for recipes..."
         value={search}
         id="search"
         onChange={handleInputChange}

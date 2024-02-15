@@ -8,10 +8,6 @@ import {
 
     GET_DRINKS_RECIPES_BEGIN,
     GET_DRINKS_RECIPES_SUCCESS,
-
-    SEND_MESSAGE_BEGIN,
-    SEND_MESSAGE_SUCCESS,
-    SEND_MESSAGE_ERROR,
 } from './actions';
 
 // Define the initial state for the reducer

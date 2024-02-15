@@ -27,7 +27,7 @@ const Favorites = () => {
                   key={index}                 
                 >        
                 <Card 
-                  className='favorites-card'
+                  className='favorites-card h-100'
                   onClick={()=> handleCardClick(title)}
                 >
                   <Card.Img 
@@ -35,7 +35,7 @@ const Favorites = () => {
                     src={image} 
                     className='favorites-img'
                   />
-                  <Card.Body>
+                  <Card.Body className='favorites-card-body'>
                     <Card.Title className='favorites-card-title'>{title}</Card.Title>                    
                   </Card.Body>
                 </Card>

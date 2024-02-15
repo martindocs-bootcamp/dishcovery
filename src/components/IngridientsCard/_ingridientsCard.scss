@@ -48,4 +48,16 @@
             font-size: 18px;
         }
     }
+
+    &-text {
+        margin-bottom: 0;
+    }
+
+    &-no-img {
+        padding: 20px;
+        background: white;
+        border-radius: 50%;
+        margin: 0 18px 0 0;
+        border: 1px solid #d2d2d2;
+    }
 }

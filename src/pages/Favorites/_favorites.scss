@@ -1,7 +1,23 @@
 .favorites {
   cursor: pointer;
 
+  &-title {
+    margin-bottom: 50px;
+    font-size: 25px;
+  }
+
+  &-card {
+    min-width: 150px;
+  }
+
   &-card-title {
     font-size: 16px;
+  }
+
+  &-card-body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-top: 1px solid #d2d2d2;
   }
 }

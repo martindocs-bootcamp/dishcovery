@@ -41,31 +41,32 @@ const Contact = () => {
       showErrorMessage('Please enter a valid email address.');
       return;
     }
-
-    //setup variables to populate the email
-    let subject = `Email from ${formData.senderName}`;
-    let senderEmail = formData.senderEmail;
-    let senderMessage = `Name: ${formData.senderName}
-      Email Address: ${senderEmail}
-      Message: ${formData.senderMessage}`;
-
-    //populating the email & redirect the page to open the users default browser
-    window.location = `mailto:contactme@email.com?subject=${subject}&body=${senderMessage}`;
-
-    // sendEmail(formData); //fix original from Marcin
-
-    handleClearForm
     
-    // sendEmail(formData);
+    if(formData.senderName === '' || formData.senderMessage === ''){
+      showErrorMessage('Please provide your name and message before submitting.');
+      return;
+    } 
+      
+      //setup variables to populate the email, where %0D%0A%0D%0A is to simulate line two breaks
+      let subject = `New email from ${formData.senderName}`;
+      let senderEmail = formData.senderEmail;
+      let senderMessage = `Name: ${formData.senderName}%0D%0A%0D%0AEmail Address: ${senderEmail}%0D%0A%0D%0AMessage: ${formData.senderMessage}%0D%0A%0D%0A`;
 
-    handleClearForm();
-
-    showSuccessMessage('Form submitted successfully!');
-  };
-
-  return (
+      //populating the email & redirect the page to open the users default browser
+      window.location = `mailto:martin.tatarski@gmail.com?subject=${subject}&body=${senderMessage}`;      
+            
+      // sendEmail(formData);
+      
+      handleClearForm();
+      
+      // showSuccessMessage('Please press "Send" from your default email client.');
+   
+    };
+    
+    return (
     <section className='contact'>    
       <MessageModal />
+        <h2 className="contact-title text-center">Contact</h2>
         <img 
           src={contactImg} 
           className='contact-img' 

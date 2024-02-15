@@ -45,17 +45,17 @@ return (
       <Card.Body className='pb-0'>
         <Row className='print-row'>
           <Col md="6" className='print-col'>
-            <div className='recipe-card-print no-print'>
+            {/* <div className='recipe-card-print no-print'>
               <Button 
                 className='recipe-card-print-btn'
                 onClick={handlePrint}
               >
                 <FaPrint />
               </Button>         
-            </div>  
+            </div>   */}
 
-            {/* <Card.Img variant="top" src={image} className='recipe-card-img' alt={`Image of ${title}`} /> */}
-            <Card.Img variant="top" src={img} className='recipe-card-img' alt={`Image of ${title}`} />
+            <Card.Img variant="top" src={image} className='recipe-card-img' alt={`Image of ${title}`} />
+            {/* <Card.Img variant="top" src={img} className='recipe-card-img' alt={`Image of ${title}`} /> */}
           </Col>
           <Col md="6" className='recipe-card-details mb-3 print-col'>
             <Row className='mb-4'>

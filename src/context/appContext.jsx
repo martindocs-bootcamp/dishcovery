@@ -67,7 +67,7 @@ export const AppProvider = ({children}) => {
     const showSuccessMessage = (text) => {
         toast.success(text, {
           position: "top-center",
-          autoClose: 1000,
+          autoClose: 2000,
           hideProgressBar: false,
           closeOnClick: true,
           pauseOnHover: true,
@@ -79,7 +79,7 @@ export const AppProvider = ({children}) => {
       const showErrorMessage = (text) => {
         toast.error(text, {
           position: "top-center",
-          autoClose: 1000,
+          autoClose: 2000,
           hideProgressBar: false,
           closeOnClick: true,
           pauseOnHover: true,
@@ -116,19 +116,18 @@ export const AppProvider = ({children}) => {
                 
                 if(str === '') {
                     // Fetch by search query
-                    // url = `https://api.edamam.com/api/recipes/v2?type=public&q=${newSearch}&app_id=${edamamApiID}&app_key=${edamamApiKey}`;
+                    url = `https://api.edamam.com/api/recipes/v2?type=public&q=${newSearch}&app_id=${edamamApiID}&app_key=${edamamApiKey}`;
                 } else {
                     // Fetch by recipe ID
-                    // const id = getFromLocalStorage().filter((item)=> item.title == newSearch)[0].id;
+                    const id = getFromLocalStorage().filter((item)=> item.title == newSearch)[0].id;
                    
-                    // url = `https://api.edamam.com/api/recipes/v2/${id}?type=public&app_id=${edamamApiID}&app_key=${edamamApiKey}`;
+                    url = `https://api.edamam.com/api/recipes/v2/${id}?type=public&app_id=${edamamApiID}&app_key=${edamamApiKey}`;
                     console.log(url)
                 }
                            
-                // const {data} = await axios.get(url);
-                              
-                // const results = data.hits ? data.hits : [data]; // Netlify
-                const {hits:results} = edamamData; // locally
+                const {data} = await axios.get(url); // Netlify                              
+                const results = data.hits ? data.hits : [data]; // Netlify
+                // const {hits:results} = edamamData; // locally
         
                 dispatch({type: GET_EDAMAM_RECIPES_SUCCESS, payload: {results}})
             }catch(err) {
@@ -143,10 +142,10 @@ export const AppProvider = ({children}) => {
             dispatch({type: GET_DRINKS_RECIPES_BEGIN});
             try {
                 
-                // const {data} = await axios.get('https://www.thecocktaildb.com/api/json/v1/1/random.php'); 
+                const {data} = await axios.get('https://www.thecocktaildb.com/api/json/v1/1/random.php'); 
             
-                // const results = data.drinks[0]; // Netlify
-                const results = drinksData.drinks[0]; // locally
+                const results = data.drinks[0]; // Netlify
+                // const results = drinksData.drinks[0]; // locally
                               
                 dispatch({type: GET_DRINKS_RECIPES_SUCCESS, payload:{results}});
             }catch(err) {

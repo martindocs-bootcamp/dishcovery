@@ -24,6 +24,7 @@ export const AppProvider = ({children}) => {
 
     // useReducer to manage state 
     const[state, dispatch] = useReducer(reducer, initialState);
+
     
     // Get favorites recipes from local storage 
     const getFromLocalStorage = () => {
@@ -33,14 +34,17 @@ export const AppProvider = ({children}) => {
         }
         return storage === null ? [] : storage;        
     }
-
+  
     // Remove a recipe from local storage by label
-    const removeFromLocalStorage = (label) => {
-        const{ favorites } = state;
-        const updatedFavorites = favorites.filter(
-            (recipe) => recipe.label !== label
-          );
-              
+    const removeFromLocalStorage = (title) => {
+         // Get favorites from local storage
+        const favoritesFromStorage = getFromLocalStorage();
+
+        // Filter out the clicked recipe
+        const updatedFavorites = favoritesFromStorage.filter(
+            (recipe) => recipe.title !== title
+        );
+        
         localStorage.setItem("favorites", JSON.stringify(updatedFavorites));
     }
 
@@ -110,8 +114,7 @@ export const AppProvider = ({children}) => {
         // Fetch Edamam API credentials
         const edamamApiID = process.env.EDAMAM_APP_ID; // Netlify
         const edamamApiKey = process.env.EDAMAM_APP_KEY; // Netlify  
-           
-      
+                
         try {
             dispatch({type: GET_EDAMAM_RECIPES_BEGIN})
             
@@ -183,7 +186,4 @@ export const AppProvider = ({children}) => {
 
 AppProvider.propTypes = {
     children: PropTypes.object.isRequired,
-    senderName: PropTypes.string.isRequired,
-    senderEmail: PropTypes.string.isRequired,
-    senderMessage: PropTypes.string.isRequired,
 }

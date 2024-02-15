@@ -42,7 +42,7 @@ return (
       {/* Toastify lib component for displaying messages */} 
       <MessageModal/>   
       <Card.Body className='pb-0'>
-        <Row className='print-row'>
+        <Row className='print-row justify-content-center'>
           <Col md="6" className='print-col'>  
 
              {/* Display recipe image */}  

@@ -1,18 +1,27 @@
 import Card from 'react-bootstrap/Card';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import Button from 'react-bootstrap/Button';
 import { useGlobalContext } from '../../hooks/useGlobalContext';
 import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
 
 // Favorites component
 const Favorites = () => {  
   // Properties and functions from global context
-  const { getFromLocalStorage, fetchEdamamRecipes } = useGlobalContext();
-
-  // Get favorites from local storage
-  const favorites = getFromLocalStorage();
+  const { removeFromLocalStorage, getFromLocalStorage, fetchEdamamRecipes } = useGlobalContext();
+  
   // useNavigate hook
   const navigate = useNavigate();
+
+  // State to manage favorites
+  const [favorites, setFavorites] = useState(getFromLocalStorage());
+
+  // Fetch latest favorites from local storage after removing an item
+  const handleRemoveClick = (title) => {
+     removeFromLocalStorage(title);
+     setFavorites(getFromLocalStorage());
+   };
 
   // Handle click on a favorite recipe card
   const handleCardClick = (title) => {
@@ -21,7 +30,7 @@ const Favorites = () => {
 
     // Navigate to the recipe page with the selected title
     navigate('/recipe', { state: { title } });
-  }
+  }  
 
   return (
     <section className="favorites">
@@ -38,20 +47,36 @@ const Favorites = () => {
 
               return (
                 <Col
-                  key={index}                 
+                  key={index}   
+                  className='favorites-col'              
                 >        
                 <Card 
-                  className='favorites-card h-100'
-                  onClick={()=> handleCardClick(title)}
+                  className='favorites-card h-100'                 
                 >
-                  <Card.Img 
-                    variant="top" 
-                    src={image} 
-                    className='favorites-img'
-                  />
+                  <div className="favorites-img-container">
+                    <Card.Img 
+                      variant="top" 
+                      src={image} 
+                      className='favorites-img'                      
+                      />
+                    <div 
+                      className="favorites-overlay"
+                      onClick={()=> handleCardClick(title)}
+                    >
+                      <div className="favorites-view-recipe">View Recipe</div>
+                    </div>
+                  </div>
                   <Card.Body className='favorites-card-body'>
                     <Card.Title className='favorites-card-title'>{title}</Card.Title>                    
                   </Card.Body>
+                  <Card.Footer className='d-flex justify-content-center'>
+                    <Button
+                      onClick={()=> handleRemoveClick(title)}
+                      className='favorites-remove-btn'
+                    >
+                      Remove
+                    </Button>
+                  </Card.Footer>
                 </Card>
                 </Col>
               )

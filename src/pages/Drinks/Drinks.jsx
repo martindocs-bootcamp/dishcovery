@@ -54,7 +54,7 @@ const Drinks = () => {
   }
 
   return (
-    <section className='drinks'>      
+    <section>      
       <Card className='drinks'>
           <h2 className='drinks-title'>{strDrink}</h2>              
         <Card.Body className='pb-0'>              

@@ -25,11 +25,7 @@ const Recipe = () => {
       fetchEdamamRecipes();
     }
   }, [favTitle]);
-
-  // useEffect(() => {
-  //   // Fetch the API data when the component mounts
-  //   fetchEdamamRecipes();
-  // }, []);
+ 
 
   if(isLoading) {
     return <Loading />

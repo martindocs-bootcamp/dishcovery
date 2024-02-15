@@ -19,12 +19,7 @@ const IngridientsCard = ({ingredients}) => {
                                 key={index}   
                                 className='print-space'                     
                             >
-                                <div className='ingridients-card-img'>
-                                    {/* <img 
-                                        src={image} 
-                                        alt={`image of ${food}`}  
-                                        className='no-print'     
-                                    /> */}
+                                <div className='ingridients-card-img'>                                  
                                     {image === null ? <p className="ingridients-card-no-img">N/A</p> : <img src={image} alt={`image of ${food}`} className='no-print' />} 
 
                                     <p className="ingridients-card-text">{text}</p>

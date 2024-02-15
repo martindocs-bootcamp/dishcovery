@@ -20,9 +20,6 @@ import {
     SEND_MESSAGE_ERROR,
 } from './actions';
 
-import edamamData from '../data/edamam.json';
-import drinksData from '../data/drinks.json';
-
 export const AppContext = createContext();
 
 export const AppProvider = ({children}) => {
@@ -106,34 +103,30 @@ export const AppProvider = ({children}) => {
         const edamamApiID = import.meta.env.VITE_EDAMAM_APP_ID; // locally
         const edamamApiKey = import.meta.env.VITE_EDAMAM_APP_KEY; // locally
         // const edamamApiID = process.env.EDAMAM_APP_ID; // Netlify
-        // const edamamApiKey = process.env.EDAMAM_APP_KEY; // Netlify
-        
-        // if (state.edamamAPI.length === 0) {
-            try {
-                dispatch({type: GET_EDAMAM_RECIPES_BEGIN})
-                
-                let url = '';
-                
-                if(str === '') {
-                    // Fetch by search query
-                    url = `https://api.edamam.com/api/recipes/v2?type=public&q=${newSearch}&app_id=${edamamApiID}&app_key=${edamamApiKey}`;
-                } else {
-                    // Fetch by recipe ID
-                    const id = getFromLocalStorage().filter((item)=> item.title == newSearch)[0].id;
-                   
-                    url = `https://api.edamam.com/api/recipes/v2/${id}?type=public&app_id=${edamamApiID}&app_key=${edamamApiKey}`;
-                    console.log(url)
-                }
-                           
-                const {data} = await axios.get(url); // Netlify                              
-                const results = data.hits ? data.hits : [data]; // Netlify
-                // const {hits:results} = edamamData; // locally
-        
-                dispatch({type: GET_EDAMAM_RECIPES_SUCCESS, payload: {results}})
-            }catch(err) {
-                console.log(err);
-            }    
-        // }
+        // const edamamApiKey = process.env.EDAMAM_APP_KEY; // Netlify        
+      
+        try {
+            dispatch({type: GET_EDAMAM_RECIPES_BEGIN})
+            
+            let url = '';
+            
+            if(str === '') {
+                // Fetch by search query
+                url = `https://api.edamam.com/api/recipes/v2?type=public&q=${newSearch}&app_id=${edamamApiID}&app_key=${edamamApiKey}`;
+            } else {
+                // Fetch by recipe ID
+                const id = getFromLocalStorage().filter((item)=> item.title == newSearch)[0].id;                
+                url = `https://api.edamam.com/api/recipes/v2/${id}?type=public&app_id=${edamamApiID}&app_key=${edamamApiKey}`;              
+            }
+                        
+            const {data} = await axios.get(url);                             
+            const results = data.hits ? data.hits : [data]; 
+    
+            dispatch({type: GET_EDAMAM_RECIPES_SUCCESS, payload: {results}})
+        }catch(err) {
+            console.log(err);
+        }    
+       
     }
 
     const fetchDrinksRecipes = async() => {
@@ -144,8 +137,7 @@ export const AppProvider = ({children}) => {
                 
                 const {data} = await axios.get('https://www.thecocktaildb.com/api/json/v1/1/random.php'); 
             
-                const results = data.drinks[0]; // Netlify
-                // const results = drinksData.drinks[0]; // locally
+                const results = data.drinks[0]; 
                               
                 dispatch({type: GET_DRINKS_RECIPES_SUCCESS, payload:{results}});
             }catch(err) {

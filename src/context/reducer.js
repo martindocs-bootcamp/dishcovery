@@ -67,28 +67,7 @@ const reducer = (state, action) => {
                 ...state,
                 isLoading: false,
                 drinksAPI: action.payload.results
-            }
-        
-        // Sending an email
-        case SEND_MESSAGE_BEGIN:            
-            return {
-                ...state,                
-                sendingEmail: true,
-                errorMessage: null,
-            };
-        
-        case SEND_MESSAGE_SUCCESS:            
-            return {
-                ...state,
-                sendingEmail: false,                
-            };
-        
-        case SEND_MESSAGE_ERROR:            
-            return {
-                ...state,
-                sendingEmail: false,
-                errorMessage: 'Error sending email', 
-            };
+            }    
 
         // Default case for handling unknown actions
         default:

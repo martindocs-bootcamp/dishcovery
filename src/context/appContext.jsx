@@ -110,13 +110,10 @@ export const AppProvider = ({children}) => {
         // If the user used search option set to 'search' state
         // or if user clicked on favorite recipe set the search to recipe title
         const newSearch = str === '' ? search : str;
-        
-        const edamamApiID = import.meta.env.VITE_EDAMAM_APP_ID; // locally
-        const edamamApiKey = import.meta.env.VITE_EDAMAM_APP_KEY; // locally
 
         // Fetch Edamam API credentials
-        // const edamamApiID = process.env.EDAMAM_APP_ID; // Netlify
-        // const edamamApiKey = process.env.EDAMAM_APP_KEY; // Netlify        
+        const edamamApiID = process.env.EDAMAM_APP_ID; // Netlify
+        const edamamApiKey = process.env.EDAMAM_APP_KEY; // Netlify        
       
         try {
             dispatch({type: GET_EDAMAM_RECIPES_BEGIN})
@@ -166,25 +163,6 @@ export const AppProvider = ({children}) => {
         }
     }
 
-    // Send an email
-    const sendEmail = async(props) => {        
-        const{senderName, senderEmail, senderMessage} = props;
-
-        dispatch({type: SEND_MESSAGE_BEGIN});
-        try {
-            // Call Netlify function to send an email
-            await axios.post('/.netlify/functions/sendEmail',{                 
-                  name: senderName,
-                  email: senderEmail,
-                  message: senderMessage,                
-            });            
-            
-            dispatch({type: SEND_MESSAGE_SUCCESS});
-        }catch(err) {
-            dispatch({type: SEND_MESSAGE_ERROR});
-        }
-    }
-
     // Provide the state and functions to the AppContext
     return (
         <AppContext.Provider 
@@ -199,7 +177,6 @@ export const AppProvider = ({children}) => {
                 handleResetState,
                 fetchEdamamRecipes,
                 fetchDrinksRecipes,
-                sendEmail,
             }}
         >
             {children}

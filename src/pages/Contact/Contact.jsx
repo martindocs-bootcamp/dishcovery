@@ -15,7 +15,7 @@ const Contact = () => {
   });
 
   // Functions from global context
-  const{ sendEmail, showSuccessMessage, showErrorMessage, } = useGlobalContext();
+  const{ showErrorMessage, } = useGlobalContext();
 
   // State to manage image loading
   const [imageLoaded, setImageLoaded] = useState(false);
@@ -61,15 +61,10 @@ const Contact = () => {
       let senderMessage = `Name: ${formData.senderName}%0D%0A%0D%0AEmail Address: ${senderEmail}%0D%0A%0D%0AMessage: ${formData.senderMessage}%0D%0A%0D%0A`;
 
       //populating the email & redirect the page to open the users default browser
-      window.location = `mailto:martin.tatarski@gmail.com?subject=${subject}&body=${senderMessage}`;      
-            
-      // sendEmail(formData);
+      window.location = `mailto:martin.tatarski@gmail.com?subject=${subject}&body=${senderMessage}`; 
       
       // Clear the form
-      handleClearForm();
-      
-      // showSuccessMessage('Please press "Send" from your default email client.');
-   
+      handleClearForm();   
     };
     
     return (

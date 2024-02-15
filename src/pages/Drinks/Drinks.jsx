@@ -7,9 +7,12 @@ import { useGlobalContext } from '../../hooks/useGlobalContext';
 import { useEffect } from 'react';
 import { Loading } from '../../components';
 
+// Drinks component
 const Drinks = () => {
+  // Properties and functions from global context
   const { isLoading, drinksAPI, fetchDrinksRecipes } = useGlobalContext();
   
+  // Properties from drinksAPI
   const{
     strDrinkThumb, 
     strDrink,
@@ -18,17 +21,21 @@ const Drinks = () => {
     strInstructions,     
   } = drinksAPI;
  
+  // Fetch drinks recipes on component mount
   useEffect(()=> {
     fetchDrinksRecipes();
   },[])
 
+  // Extract ingredient data from the drinksAPI object
   const extractData = (obj) => {
     const data = [];
 
+    // Filter out ingredient keys that have a non-empty value
     const ingredientKeys = Object.entries(obj).filter((key) => {
       return key[0].startsWith('strIngredient') && key[1]
     });
       
+    // Iterate over the filtered ingredient keys and create an array of objects
     for (let i = 0; i < ingredientKeys.length; i++) {
       const ingredient = ingredientKeys[i][1];
       const measure = obj[`strMeasure${i+1}`]
@@ -38,8 +45,10 @@ const Drinks = () => {
     return data;
   }
 
+  // Extracted ingredient names array
   const ingredientNames = extractData(drinksAPI);
 
+  // Display loading spinner while data is being fetched
   if(isLoading) {
     return <Loading />
   }
@@ -50,6 +59,8 @@ const Drinks = () => {
           <h2 className='drinks-title'>{strDrink}</h2>              
         <Card.Body className='pb-0'>              
           <Row>
+
+            {/* Column for drink image and back button */}
             <Col md="6">
               <Card.Img variant="top" className='drinks-img' src={strDrinkThumb} alt={`Image of ${strDrink} drink`} />
 
@@ -64,6 +75,7 @@ const Drinks = () => {
               </div>
             </Col>
 
+            {/* Column for ingredient list, instructions, and additional details */}
             <Col md="6">
                 <h4 className='drinks-headings'>{ingredientNames.length} Ingredients</h4> 
                 <ListGroup variant="list-group-flush">
@@ -84,10 +96,12 @@ const Drinks = () => {
                 }               
                 </ListGroup>  
 
+                {/* Instructions */}
                 <h4 className='drinks-headings'>Instructions</h4>
                 <Card.Text>{strInstructions}</Card.Text>   
                 <Card.Text className='drinks-other'>Serve in {strGlass}</Card.Text>   
 
+                {/* Additional details */}
                 <h4 className='drinks-headings'>Category</h4>         
                 <Card.Text className='drinks-other'>{strCategory}</Card.Text>
             </Col>          

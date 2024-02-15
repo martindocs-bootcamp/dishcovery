@@ -5,17 +5,22 @@ import contactImg from '../../assets/contact.png';
 import { useGlobalContext } from '../../hooks/useGlobalContext'; 
 import MessageModal from '../../components/MessageModal/MessageModal';
 
+// Contact component
 const Contact = () => {
+  // State to manage form data
   const [formData, setFormData] = useState({
     senderName: '',
     senderEmail: '',
     senderMessage: '',
   });
 
+  // Functions from global context
   const{ sendEmail, showSuccessMessage, showErrorMessage, } = useGlobalContext();
 
+  // State to manage image loading
   const [imageLoaded, setImageLoaded] = useState(false);
 
+  // Event handler for form input changes
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({
@@ -24,6 +29,7 @@ const Contact = () => {
     });
   };
   
+  // Event handler to clear the form
   const handleClearForm = () => {    
     setFormData({
       senderName: '',
@@ -32,6 +38,7 @@ const Contact = () => {
     });
   }
 
+  // Form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -42,6 +49,7 @@ const Contact = () => {
       return;
     }
     
+    // Check if name and message are provided
     if(formData.senderName === '' || formData.senderMessage === ''){
       showErrorMessage('Please provide your name and message before submitting.');
       return;
@@ -57,6 +65,7 @@ const Contact = () => {
             
       // sendEmail(formData);
       
+      // Clear the form
       handleClearForm();
       
       // showSuccessMessage('Please press "Send" from your default email client.');
@@ -64,17 +73,24 @@ const Contact = () => {
     };
     
     return (
-    <section className='contact'>    
+    <section className='contact'>   
+      {/* Display Toastify component msg */} 
       <MessageModal />
         <h2 className="contact-title text-center">Contact</h2>
+
+        {/* Display contact image once loaded */}
         <img 
           src={contactImg} 
           className='contact-img' 
           onLoad={() => setImageLoaded(true)}  
         />
+
+        {/* Render the form once the contact image is loaded */}
         {
           imageLoaded && 
             <Form className='contact-form' onSubmit={(e)=> e.preventDefault()}>
+
+              {/* Name input field */}
               <Form.Group controlId="formFullName" >
                 <Form.Label className='contact-form-label'>Full Name</Form.Label>
                 <Form.Control   
@@ -88,6 +104,7 @@ const Contact = () => {
                 />
               </Form.Group>
 
+              {/* Email input field */}
               <Form.Group controlId="formEmail">
                 <Form.Label className='contact-form-label'>Email address</Form.Label>
                 <Form.Control
@@ -101,6 +118,7 @@ const Contact = () => {
                 />
               </Form.Group>
 
+              {/* Message textarea */}
               <Form.Group controlId="formMessage">
                 <Form.Label className='contact-form-label'>Message</Form.Label>
                 <Form.Control
@@ -115,6 +133,7 @@ const Contact = () => {
                 />
               </Form.Group>
 
+              {/* Buttons for submitting and clearing the form */}
               <div className='contact-form-btn'>
                 <Button 
                   type="submit" 

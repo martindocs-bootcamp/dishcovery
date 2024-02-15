@@ -5,7 +5,9 @@ import Col from 'react-bootstrap/Col';
 import ListGroup from 'react-bootstrap/ListGroup';
 import { Nutrition, ShareButtons, MessageModal } from '../../components';
 import { useGlobalContext } from '../../hooks/useGlobalContext';
+import { useEffect } from 'react';
 
+// Recipe data destructured
 const RecipeImgCard = ({
   handlePrint,   
   image, 
@@ -26,20 +28,29 @@ const RecipeImgCard = ({
     PROCNT:protein,   
   } = totalNutrients;
 
+  // Access functions from global context
   const { addToLocalStorage, getFromLocalStorage } = useGlobalContext();
 
-
-  getFromLocalStorage();
+  // Invoke the getFromLocalStorage function
+  useEffect(()=> {
+    getFromLocalStorage();
+  },[])
 
 return (
-    <Card className='recipe-card'>   
+    <Card className='recipe-card'>  
+
+      {/* Toastify lib component for displaying messages */} 
       <MessageModal/>   
       <Card.Body className='pb-0'>
         <Row className='print-row'>
-          <Col md="6" className='print-col'>    
+          <Col md="6" className='print-col'>  
+
+             {/* Display recipe image */}  
             <Card.Img variant="top" src={image} className='recipe-card-img' alt={`Image of ${title}`} />
           </Col>
           <Col md="6" className='recipe-card-details mb-3 print-col'>
+
+            {/* Display recipe details */}
             <Row className='mb-4'>
               <Col>
                 Total Time: <br />{totalTime ? `${totalTime} mins` : 'N/A'} 
@@ -52,6 +63,7 @@ return (
               </Col>
             </Row>
 
+            {/* Display nutrition facts */}
             <ListGroup variant="flush">
               <h4>Nutrition Facts <span>(per serving)</span></h4>  
           
@@ -94,6 +106,8 @@ return (
 
       </Card.Body>      
       <Card.Footer className='recipe-card-footer'>
+
+        {/* ShareButtons component for social sharing / save to favourite and printing */}
         <ShareButtons 
           url={url} 
           handlePrint={handlePrint} 
@@ -112,11 +126,11 @@ RecipeImgCard.propTypes = {
     image: PropTypes.string.isRequired, 
     title: PropTypes.string.isRequired, 
     url: PropTypes.string.isRequired,
-    source: PropTypes.string.isRequired,
     calories: PropTypes.number.isRequired,
     totalTime: PropTypes.number.isRequired,
     servings: PropTypes.number.isRequired,
     totalNutrients: PropTypes.object.isRequired,
+    id: PropTypes.string.isRequired,    
 }
 
 export default RecipeImgCard;

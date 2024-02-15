@@ -20,11 +20,16 @@ import {
     SEND_MESSAGE_ERROR,
 } from './actions';
 
+// Create AppContext using createContext
 export const AppContext = createContext();
 
+// Define the AppProvider component
 export const AppProvider = ({children}) => {
+
+    // useReducer to manage state 
     const[state, dispatch] = useReducer(reducer, initialState);
     
+    // Get favorites recipes from local storage 
     const getFromLocalStorage = () => {
         const storage = JSON.parse(localStorage.getItem('favorites'));
         if(!storage){
@@ -33,6 +38,7 @@ export const AppProvider = ({children}) => {
         return storage === null ? [] : storage;        
     }
 
+    // Remove a recipe from local storage by label
     const removeFromLocalStorage = (label) => {
         const{ favorites } = state;
         const updatedFavorites = favorites.filter(
@@ -42,6 +48,7 @@ export const AppProvider = ({children}) => {
         localStorage.setItem("favorites", JSON.stringify(updatedFavorites));
     }
 
+    // Add a recipe to local storage
     const addToLocalStorage = ({title, image, id}) => {
         const favorites = getFromLocalStorage();
 
@@ -60,7 +67,7 @@ export const AppProvider = ({children}) => {
         }
     }
 
-
+    // Display a success message using react-toastify lib
     const showSuccessMessage = (text) => {
         toast.success(text, {
           position: "top-center",
@@ -71,37 +78,43 @@ export const AppProvider = ({children}) => {
           draggable: false,
           theme: "light",
         });
-      };
+    };
     
-      const showErrorMessage = (text) => {
+    // Display an error message using the react-toastify lib
+    const showErrorMessage = (text) => {
         toast.error(text, {
-          position: "top-center",
-          autoClose: 2000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: false,
-          theme: "light",
+            position: "top-center",
+            autoClose: 2000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: false,
+            theme: "light",
         });
-      };
+    };
 
     // Handle input search 
     const handleInput = ({name, value}) => {
         dispatch({type: HANDLE_INPUT, payload: {value, name} })
     }
 
+    // Reset the state to initial values
     const handleResetState = () => {
         dispatch({type: HANDLE_RESET_STATE});
     }
     
-    // Fetch data from Edeme recepies
+    // Fetch data from the Edamam API
     const fetchEdamamRecipes = async ( str = '') => {      
         const {search} = state;
         
+        // If the user used search option set to 'search' state
+        // or if user clicked on favorite recipe set the search to recipe title
         const newSearch = str === '' ? search : str;
         
         const edamamApiID = import.meta.env.VITE_EDAMAM_APP_ID; // locally
         const edamamApiKey = import.meta.env.VITE_EDAMAM_APP_KEY; // locally
+
+        // Fetch Edamam API credentials
         // const edamamApiID = process.env.EDAMAM_APP_ID; // Netlify
         // const edamamApiKey = process.env.EDAMAM_APP_KEY; // Netlify        
       
@@ -110,25 +123,32 @@ export const AppProvider = ({children}) => {
             
             let url = '';
             
+            // True when user use search input 
             if(str === '') {
                 // Fetch by search query
                 url = `https://api.edamam.com/api/recipes/v2?type=public&q=${newSearch}&app_id=${edamamApiID}&app_key=${edamamApiKey}`;
+            
+            // True when user clicked on recipe through Favorite page
             } else {
-                // Fetch by recipe ID
+                // Get the id of clicked recipe from local storage 
                 const id = getFromLocalStorage().filter((item)=> item.title == newSearch)[0].id;                
+                // and using the id Fetch the recipe by it's ID
                 url = `https://api.edamam.com/api/recipes/v2/${id}?type=public&app_id=${edamamApiID}&app_key=${edamamApiKey}`;              
             }
                         
-            const {data} = await axios.get(url);                             
+            const {data} = await axios.get(url);   
+            
+            // Depend of the 'data' recived, when its an array then user used Search page
+            // if not user used Favorite page then
             const results = data.hits ? data.hits : [data]; 
     
             dispatch({type: GET_EDAMAM_RECIPES_SUCCESS, payload: {results}})
         }catch(err) {
             console.log(err);
-        }    
-       
+        }           
     }
 
+    // Fetch a random drink recipe
     const fetchDrinksRecipes = async() => {
 
         if (state.drinksAPI.length === 0) {
@@ -146,11 +166,13 @@ export const AppProvider = ({children}) => {
         }
     }
 
+    // Send an email
     const sendEmail = async(props) => {        
         const{senderName, senderEmail, senderMessage} = props;
 
         dispatch({type: SEND_MESSAGE_BEGIN});
         try {
+            // Call Netlify function to send an email
             await axios.post('/.netlify/functions/sendEmail',{                 
                   name: senderName,
                   email: senderEmail,
@@ -163,6 +185,7 @@ export const AppProvider = ({children}) => {
         }
     }
 
+    // Provide the state and functions to the AppContext
     return (
         <AppContext.Provider 
             value={{

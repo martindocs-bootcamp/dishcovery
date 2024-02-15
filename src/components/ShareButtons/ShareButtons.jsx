@@ -14,23 +14,31 @@ import {
   
 } from 'react-share';
 
+// ShareButtons component for all social buttons
 const ShareButtons = ({url, addToLocalStorage, handlePrint, title, image, id}) => {
 
   return (   
     <section className='share no-print'>
+
+      {/* Email share button */}
       <EmailShareButton url={url} className="share-btn">
         <EmailIcon size={36} round />
         <p>Email</p>
       </EmailShareButton>
+
+      {/* Facebook share button */}
       <FacebookShareButton url={url} className="share-btn">
         <FacebookIcon size={36} round />
         <p>Share</p>
-      </FacebookShareButton>     
+      </FacebookShareButton>   
+
+      {/* Twitter/X share button */}  
       <TwitterShareButton url={url} className="share-btn">
         <TwitterIcon size={36} round />
         <p>Tweet</p>
       </TwitterShareButton>            
 
+     {/* Print button */}
       <div className='share-print no-print'>
         <Button 
           className='share-print-btn'
@@ -41,6 +49,7 @@ const ShareButtons = ({url, addToLocalStorage, handlePrint, title, image, id}) =
         <p>Print</p>     
       </div>       
 
+      {/* Save to favorites button */}
       <div className='share-heart'>
         <Button 
           className='share-heart-btn'
@@ -57,6 +66,10 @@ const ShareButtons = ({url, addToLocalStorage, handlePrint, title, image, id}) =
 ShareButtons.propTypes = {
   url: PropTypes.string.isRequired,
   addToLocalStorage: PropTypes.func.isRequired,
+  handlePrint: PropTypes.func.isRequired, 
+  title: PropTypes.string.isRequired, 
+  image: PropTypes.string.isRequired, 
+  id: PropTypes.string.isRequired
 }
 
 export default ShareButtons;

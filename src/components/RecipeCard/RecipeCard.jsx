@@ -3,11 +3,13 @@ import Card from 'react-bootstrap/Card';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import ListGroup from 'react-bootstrap/ListGroup';
-import { Nutrition, ShareButtons } from '../../components';
+import { Nutrition, ShareButtons, MessageModal } from '../../components';
 import Button from 'react-bootstrap/Button';
 import { FaPrint } from "react-icons/fa";
+import { useGlobalContext } from '../../hooks/useGlobalContext';
 
 import img from '../../assets/img-food.jpg'; //temp
+import { useEffect } from 'react';
 
 const RecipeImgCard = ({
   handlePrint,   
@@ -18,6 +20,7 @@ const RecipeImgCard = ({
   totalTime,
   servings,
   totalNutrients,
+  id,
 }) => {
 
   const{
@@ -28,9 +31,17 @@ const RecipeImgCard = ({
     PROCNT:protein,   
   } = totalNutrients;
 
+  const { addToLocalStorage, getFromLocalStorage } = useGlobalContext();
+
+  // useEffect(()=> {
+    getFromLocalStorage();
+  // },[])
+
+
 
 return (
-    <Card className='recipe-card'>      
+    <Card className='recipe-card'>   
+      <MessageModal/>   
       <Card.Body className='pb-0'>
         <Row className='print-row'>
           <Col md="6" className='print-col'>
@@ -43,6 +54,7 @@ return (
               </Button>         
             </div>  
 
+            {/* <Card.Img variant="top" src={image} className='recipe-card-img' alt={`Image of ${title}`} /> */}
             <Card.Img variant="top" src={img} className='recipe-card-img' alt={`Image of ${title}`} />
           </Col>
           <Col md="6" className='recipe-card-details mb-3 print-col'>
@@ -100,7 +112,15 @@ return (
 
       </Card.Body>      
       <Card.Footer className='recipe-card-footer'>
-        <ShareButtons url={url} handlePrint={handlePrint} />      
+        <ShareButtons 
+          url={url} 
+          handlePrint={handlePrint} 
+          addToLocalStorage={addToLocalStorage}
+          title={title}
+          image={image}
+          id={id}
+          // image={img}
+        />      
       </Card.Footer>
     </Card>    
   )

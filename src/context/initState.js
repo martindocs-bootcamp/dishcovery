@@ -1,7 +1,8 @@
 export const initialState = {
     isLoading: false,
     edamamAPI: [],
-    drinksAPI: [],    
+    recipeID: '',
+    drinksAPI: [],      
     search: '', 
     sendingEmail: false,
     errorMessage: null,     

@@ -6,6 +6,7 @@ import {
   LandingPage,
   ErrorPage,  
   Contact,
+  Favorites,
 } from './pages';
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
         <Route path="/" element={<SharedLayout />}>
           <Route index element={<LandingPage/>} />
           <Route path="/recipe" element={<Recipe />} />
+          <Route path="/favorites" element={<Favorites />} />
           <Route path="/drinks" element={<Drinks />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="*" element={<ErrorPage />} />          

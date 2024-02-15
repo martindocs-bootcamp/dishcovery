@@ -4,6 +4,7 @@ import ErrorPage from "./ErrorPage/ErrorPage";
 import LandingPage from "./LandingPage/LandingPage";
 import Drinks from "./Drinks/Drinks";
 import Contact from "./Contact/Contact";
+import Favorites from "./Favorites/Favorites";
 
 export {
     SharedLayout,
@@ -12,4 +13,5 @@ export {
     ErrorPage,
     LandingPage,
     Contact,
+    Favorites,
 }

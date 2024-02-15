@@ -1,4 +1,6 @@
 import PropTypes from 'prop-types';
+import { FaHeart } from "react-icons/fa";
+import Button from 'react-bootstrap/Button';
 
 import { 
   EmailShareButton,
@@ -9,14 +11,13 @@ import {
 
   TwitterShareButton,
   TwitterIcon,
-
-  PinterestShareButton,
-  PinterestIcon,
+  
 } from 'react-share';
 
-const ShareButtons = ({url}) => {
+const ShareButtons = ({url, addToLocalStorage, title, image, id}) => {
+
   return (   
-    <section className='no-print'>
+    <section className='share no-print'>
       <EmailShareButton url={url} className="share-btn">
         <EmailIcon size={36} round />
         <p>Email</p>
@@ -28,17 +29,24 @@ const ShareButtons = ({url}) => {
       <TwitterShareButton url={url} className="share-btn">
         <TwitterIcon size={36} round />
         <p>Tweet</p>
-      </TwitterShareButton>      
-      <PinterestShareButton url={url} className="share-btn">
-        <PinterestIcon size={36} round />
-        <p>Pin it</p>
-      </PinterestShareButton>        
+      </TwitterShareButton>            
+
+      <div className='share-heart'>
+        <Button 
+          className='share-heart-btn'
+          onClick={()=> addToLocalStorage({title, image, id})}
+        >
+          <FaHeart />
+        </Button>         
+        <p>Save</p>
+      </div>      
     </section>   
   )
 }
 
 ShareButtons.propTypes = {
   url: PropTypes.string.isRequired,
+  addToLocalStorage: PropTypes.func.isRequired,
 }
 
 export default ShareButtons;

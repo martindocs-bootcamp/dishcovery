@@ -17,6 +17,7 @@ const initialState = {
     isLoading: false,
     edamamAPI: [],
     drinksAPI: [],
+    favorites: [],
     search: '',
     sendingEmail: false,
     errorMessage: null,

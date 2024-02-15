@@ -3,34 +3,48 @@ import { useEffect, useRef } from 'react';
 import { useReactToPrint } from 'react-to-print';
 import { Loading, RecipeCard, IngridientsCard } from '../../components';
 import Card from 'react-bootstrap/Card';
-import { Link } from 'react-router-dom';
-
+import { Link, useLocation } from 'react-router-dom';
 
 const Recipe = () => {
   const { isLoading, edamamAPI, fetchEdamamRecipes } = useGlobalContext();  
   const componentRef = useRef();
 
+  const location = useLocation(); 
+  const favTitle = location.state?.title;
+ 
+  
   const handlePrint = useReactToPrint({
     content: () => componentRef.current,
   });
 
+
   useEffect(() => {
-    // Fetch the API data when the component mounts
-    fetchEdamamRecipes();
-  }, []);
+    if (favTitle) {
+      fetchEdamamRecipes(favTitle);
+    } else {      
+      fetchEdamamRecipes();
+    }
+  }, [favTitle]);
+
+  // useEffect(() => {
+  //   // Fetch the API data when the component mounts
+  //   fetchEdamamRecipes();
+  // }, []);
 
   if(isLoading) {
     return <Loading />
   }
 
-  if(edamamAPI.length === 0){
+  if(edamamAPI.length === 0) {
     return (
       <section className="no-recipe">
-        Search for recipe
+        <h2>No recipe found</h2>
       </section>
     )
   }
  
+  const recipeData = edamamAPI[0];
+
   const{
     label, 
     image, 
@@ -41,8 +55,12 @@ const Recipe = () => {
     calories,
     totalTime,    
     totalNutrients,  
-  } = edamamAPI[0].recipe; 
+  } = Array.isArray(recipeData) ? recipeData[0].recipe : recipeData.recipe;
 
+  const recipeID = Array.isArray(recipeData) && recipeData.length > 0
+  ? recipeData[0]._links.self.href.split(/[/?]/)[6]
+  : recipeData._links.self.href.split(/[/?]/)[6];
+  
   return edamamAPI.length !== 0 && (
     <section className="recipe" ref={componentRef}>
 
@@ -57,6 +75,7 @@ const Recipe = () => {
           totalTime={totalTime}
           title={label}
           totalNutrients={totalNutrients}
+          id={recipeID}
         />
        
         <IngridientsCard ingredients={ingredients} />              

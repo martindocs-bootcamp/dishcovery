@@ -1,11 +1,15 @@
 .contact {
   position: relative;
-  padding-top: 80px;
 
   &-img {
     min-width: 300px;
     max-width: 650px;
     width: 100%;
+  }
+
+  &-title {
+    margin-bottom: 50px;
+    font-size: 25px;
   }
 
   &-form {
@@ -73,7 +77,6 @@
     }
 
     &-form-input {
-      text-align: center;
       width: 200px;
       margin: 5px;
     }

@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { FaHeart } from "react-icons/fa";
+import { FaHeart, FaPrint } from "react-icons/fa";
 import Button from 'react-bootstrap/Button';
 
 import { 
@@ -14,7 +14,7 @@ import {
   
 } from 'react-share';
 
-const ShareButtons = ({url, addToLocalStorage, title, image, id}) => {
+const ShareButtons = ({url, addToLocalStorage, handlePrint, title, image, id}) => {
 
   return (   
     <section className='share no-print'>
@@ -30,6 +30,16 @@ const ShareButtons = ({url, addToLocalStorage, title, image, id}) => {
         <TwitterIcon size={36} round />
         <p>Tweet</p>
       </TwitterShareButton>            
+
+      <div className='share-print no-print'>
+        <Button 
+          className='share-print-btn'
+          onClick={handlePrint}
+        >
+          <FaPrint />
+        </Button>    
+        <p>Print</p>     
+      </div>       
 
       <div className='share-heart'>
         <Button 

@@ -24,7 +24,6 @@ export const AppProvider = ({children}) => {
 
     // useReducer to manage state 
     const[state, dispatch] = useReducer(reducer, initialState);
-
     
     // Get favorites recipes from local storage 
     const getFromLocalStorage = () => {
@@ -113,7 +112,7 @@ export const AppProvider = ({children}) => {
 
         // Fetch Edamam API credentials
         const edamamApiID = process.env.EDAMAM_APP_ID; // Netlify
-        const edamamApiKey = process.env.EDAMAM_APP_KEY; // Netlify  
+        const edamamApiKey = process.env.EDAMAM_APP_KEY; // Netlify 
                 
         try {
             dispatch({type: GET_EDAMAM_RECIPES_BEGIN})

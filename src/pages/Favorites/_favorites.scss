@@ -25,6 +25,7 @@
     color: white;
     text-align: center;
     transition: opacity 0.3s ease-in-out;
+    border-radius: 8px;
   }
   
   &-view-recipe {
@@ -34,6 +35,7 @@
   
   &-img-container:hover &-overlay {
     opacity: 1;
+    border-radius: 8px;
     cursor: pointer;
   }
 

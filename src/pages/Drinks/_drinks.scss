@@ -14,8 +14,18 @@
 
   &-list-item {
     border: 0;
-    padding-left: 10px;
-    list-style-type: disc;
+    padding-left: 20px;
+    position: relative;
+  }
+
+  &-list-item:before {
+    content: '\2022'; 
+    color: #000; 
+    font-size: 1.2em; 
+    position: absolute;
+    left: 2.5px; 
+    top: 45%;
+    transform: translateY(-45%);
   }
 
   &-list-item:last-child {

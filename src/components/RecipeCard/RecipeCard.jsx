@@ -53,19 +53,19 @@ return (
             {/* Display recipe details */}
             <Row className='mb-4'>
               <Col>
-                Total Time: <br />{totalTime ? `${totalTime} mins` : 'N/A'} 
+                <span className='recipe-card-text'>Total Time:</span> <br />{totalTime ? `${totalTime} mins` : 'N/A'} 
               </Col>
               <Col>
-                Servings: <br />{servings}
+                <span className='recipe-card-text'>Servings:</span> <br />{servings}
               </Col>
               <Col>
-                Calories: <br />{Math.round(calories/servings)} kcal
+                <span className='recipe-card-text'>Calories:</span> <br />{Math.round(calories/servings)} kcal
               </Col>
             </Row>
 
             {/* Display nutrition facts */}
             <ListGroup variant="flush">
-              <h4>Nutrition Facts <span>(per serving)</span></h4>  
+              <h4 className='recipe-card-text'>Nutrition Facts (per serving)</h4>  
           
               <ListGroup.Item>                
                 <Nutrition 
